@@ -1,0 +1,66 @@
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local runtime files
+local_prompt.json
+*.log
+
+# Local model files and checkpoints
+model-path/
+checkpoints/
+outputs/
+runs/
+wandb/
+models/
+
+# Local embedding model cache
+data/all-mpnet-base/
+
+# Generated experiment artifacts under data/
+data/entity_pair_selection_prompt/
+data/entity_pair_selection_run/
+data/check_result_entity_pair_selection_jsonl/
+data/get_entity_pair_selection_label/
+data/entity_information_prompt/
+data/entity_information_run/
+data/entity_information/
+data/relation_summary_prompt/
+data/relation_summary_run/
+data/check_result_relation_summary_jsonl/
+data/get_embeddings/
+data/retrieval_from_train/
+data/multiple_choice_prompt/
+data/multiple_choice_run/
+data/check_result_multiple_choice_jsonl/
+data/get_multiple_choice_label/
+data/triplet_fact_judgement_prompt/
+data/triplet_fact_judgement_run/
+data/check_result_triplet_fact_judgement_jsonl/
+data/get_triplet_fact_judgement_label/
+
+# Final exported results
+result/
