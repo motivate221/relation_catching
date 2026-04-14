@@ -7,7 +7,7 @@ import re
 import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+from pipeline_config import append_method_tag, get_doc_range, get_method_tag, get_range_tag, read_json_file_as_df
 
 def get_doc_title(doc_id, df):
 
@@ -68,6 +68,7 @@ def extract_binary_answer(response):
 
 
 data_name = os.getenv("DATA_NAME", "dev")
+method_tag = get_method_tag()
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -83,7 +84,7 @@ rel_info = eval(rel_info)
 
 reverse_rel_info = {v: k for k, v in rel_info.items()}
 
-save_doc_name = f"k20-{doc_name}_{range_tag}"
+save_doc_name = append_method_tag(f"k20-{doc_name}_{range_tag}", method_tag)
 
 file_path = f"../data/check_result_triplet_fact_judgement_jsonl/{data_name}/result_{doc_name}_{data_name}_triplet_fact_judgement_{save_doc_name}.jsonl"
 

@@ -11,10 +11,20 @@ from get_prompt import get_prompt_entity_rel
 from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile, ensure_ascii=False)
             jsonlfile.write('\n')
+
+def safe_print(text):
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        fallback_text = str(text).encode("gbk", errors="replace").decode("gbk", errors="replace")
+        print(fallback_text)
 
 def get_doc_entitys(doc_id, df):
 
@@ -148,7 +158,7 @@ for doc_id in range(start, doc_end):
                     data_dict["title"] = title
                     final_list.append(data_dict)
 
-    print(f"Doc:{title} prompt over")
+    safe_print(f"Doc:{title} prompt over")
 
 
 

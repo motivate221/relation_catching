@@ -1,0 +1,465 @@
+创新点设计说明
+
+我建议本课题的创新点定义为：
+
+基于证据感知与自适应关系重排的文档级关系抽取框架
+英文可写为：Evidence-Aware Adaptive Relation Reranking for DocRE
+
+核心思想是：
+在现有六阶段流程中，第 4 阶段已经能够检索出候选关系，第 5、6 阶段能够完成筛选和验证；但当前仍存在三个关键问题：
+
+1. 第 4 阶段召回的候选关系噪声较大；
+2. 第 5 阶段 prompt 中候选关系过多，模型注意力容易分散；
+3. 第 6 阶段仍会验证很多本来不可靠的关系，增加推理成本。
+
+因此，本创新点不推翻现有六阶段框架，而是在第 4 阶段和第 5 阶段之间增加一个“证据感知的关系候选重排模块”。
+
+该模块对每个实体对 (h, t) 执行如下操作：
+
+1. 从文档中抽取与该实体对最相关的证据句；
+2. 对第 4 阶段召回的候选关系重新打分；
+3. 将原始 top-k 候选关系压缩为更小、更准确的候选集；
+4. 将压缩后的结果送入第 5 阶段和第 6 阶段。
+
+该创新点能够带来两类提升：
+
+1. 性能提升：减少错误关系进入后续阶段，提高 precision；
+2. 效率提升：减少 prompt 长度、调用次数和 token 消耗。
+
+该创新点与三篇参考论文的关系如下：
+
+1. 借鉴 LLM with Relation Classifier 的思想：先缩小 candidate space，减少无关候选带来的注意力分散；
+2. 借鉴 DocKS-RAG 的思想：显式引入句子级证据检索，而不是只让模型处理整篇长文；
+3. 借鉴 AutoRE 的思想：避免将大量关系直接塞入 prompt，而是让候选关系更自适应、更精简。
+
+本方法与上述工作不同之处在于：
+
+1. 不需要重训大模型；
+2. 不需要重构整条流水线；
+3. 更适合当前六阶段可视化系统的工程落地与可解释展示。
+
+
+方法流程图文字版
+
+1. 文档输入
+输入一篇文档及其实体集合。
+
+2. 实体对筛选
+使用阶段 1 筛出可能存在关系的实体对。
+
+3. 实体补充描述
+使用阶段 2 为候选实体生成补充描述。
+
+4. 关系摘要生成
+使用阶段 3 为候选实体对生成关系摘要。
+
+5. 候选关系检索
+使用阶段 4 从训练库中召回 top-k 候选关系。
+
+6. 证据句抽取
+对每个候选实体对，从文档中提取最相关的证据句：
+- 实体共现句；
+- mention 所在句；
+- 与关系摘要最相似的句子；
+- 最多保留 top-k 证据句。
+
+7. 证据感知关系重排
+对每个候选关系计算综合分数，分数由以下信息共同决定：
+- 检索相似度；
+- 证据句与关系描述的语义相似度；
+- 实体类型约束；
+- mention 距离与是否跨句等特征。
+
+8. 自适应候选压缩
+根据分数分布动态决定后续走法：
+- 若 top1 分数很高，则直接送入第 6 阶段验证；
+- 若 top1 和 top2 接近，则送入第 5 阶段做小规模多选；
+- 若整体分数都较低，则直接丢弃或标记为低置信度。
+
+9. 多项选择判定
+对保留下来的少量候选关系执行阶段 5。
+
+10. 事实验证
+使用阶段 6 对最终候选三元组执行 YES/NO 判定。
+
+11. 最终关系输出
+输出最终三元组，并保留证据句和关系分数，用于后续可视化展示。
+
+
+对应代码改动方案
+
+本方案采用“最小侵入式改动”原则，尽量复用当前六阶段框架，仅增加一个新模块并修改少量输入输出逻辑。
+
+一、新增关系重排模块
+
+新增文件：
+4.retrieval/evidence_relation_rerank.py
+
+该模块负责：
+
+1. 读取第 4 阶段输出的检索结果；
+2. 读取第 3 阶段关系摘要结果；
+3. 读取原始文档 data/docred/dev.json；
+4. 为每个实体对抽取证据句；
+5. 为每个候选关系计算重排分数；
+6. 输出新的重排结果文件。
+
+建议输出文件：
+data/retrieval_rerank/dev/rerank-k20-docred_0-5.jsonl
+
+建议输出字段包括：
+
+1. title
+2. doc_id
+3. entity_h
+4. entity_t
+5. entity_h_id
+6. entity_t_id
+7. retrieved_relations
+8. evidence_sentences
+9. relation_scores
+10. top_relations
+11. routing_decision
+
+
+二、修改第 5 阶段输入来源
+
+修改文件：
+5.multiple_choice/multiple_choice_prompt.py
+
+修改方式：
+
+1. 当前第 5 阶段主要读取第 4 阶段检索结果；
+2. 修改为优先读取新的 retrieval_rerank 结果；
+3. 若 rerank 文件存在，则使用 rerank 后的 top_relations；
+4. 若 rerank 文件不存在，则回退到原始 retrieval_from_train 结果。
+
+同时建议调整第 5 阶段 prompt 组成：
+
+1. 证据句；
+2. 实体描述；
+3. 少量重排后的候选关系；
+
+而不是直接使用整篇文档和较长的原始候选列表。
+
+
+三、可选地修改第 6 阶段输入策略
+
+修改文件：
+6.triplet_fact_judgement/triplet_fact_judgement_prompt.py
+
+修改目标：
+
+1. 支持 high_confidence 路由：由重排模块直接送入第 6 阶段；
+2. 支持 needs_choice 路由：先经过第 5 阶段，再进入第 6 阶段。
+
+也就是说，第 6 阶段不仅可以接收第 5 阶段输出，还可以接收重排模块判定为高置信的候选关系。
+
+
+四、增加统一配置文件
+
+建议新增文件：
+rerank_config.py
+
+建议配置项如下：
+
+1. TOPK_RETRIEVAL = 20
+2. TOPM_RERANK = 3
+3. EVIDENCE_SENT_NUM = 3
+4. DIRECT_VERIFY_THRESHOLD = 0.85
+5. MC_GAP_THRESHOLD = 0.10
+6. USE_TYPE_CONSTRAINT = True
+
+该配置文件可以方便后续实验时比较：
+
+1. 原始框架；
+2. 加入重排模块后的框架；
+3. 不同阈值设置下的性能差异。
+
+
+建议的评分公式
+
+可在论文中将关系重排得分定义为：
+
+Score(r|h,t) = αS_retrieval + βS_evidence + γS_type + δS_distance
+
+其中：
+
+1. S_retrieval：第 4 阶段检索得到的相似度分数；
+2. S_evidence：证据句与关系描述之间的语义相似度；
+3. S_type：实体类型是否满足关系约束；
+4. S_distance：实体 mention 之间的句距、是否同句等特征。
+
+该评分函数能够构成一个轻量、可解释的关系重排器。
+
+
+实验验证建议
+
+后续可进行三组对比实验：
+
+1. 原始六阶段框架；
+2. 原始框架 + 证据句抽取；
+3. 原始框架 + 证据句抽取 + 自适应关系重排。
+
+建议比较以下指标：
+
+1. 最终 F1；
+2. 第 5 阶段平均候选关系数；
+3. 第 6 阶段平均验证次数；
+4. 平均 token 消耗；
+5. 平均推理时间。
+
+
+总结
+
+该创新点的优势在于：
+
+1. 与当前六阶段框架高度兼容；
+2. 不需要大规模重训；
+3. 既能提升准确率，也能降低推理成本；
+4. 具有良好的可解释性和可视化展示价值；
+5. 非常适合作为本科毕业设计中的“工程可实现 + 方法有改进”的创新方案。
+
+
+阶段性开发记录
+
+一、开发目标
+
+本阶段的开发目标是在现有六阶段文档级关系抽取框架基础上，新增“证据感知的自适应关系重排模块”，并以小样本 dev 0-5 为验证对象，完成从第 4 阶段到第 6 阶段的增量接入与功能验证。
+
+本阶段遵循以下原则：
+
+1. 不推翻原有六阶段主链；
+2. 优先采用最小侵入式改动；
+3. 每完成一步都检查上下游接口；
+4. 先在小样本上跑通，再考虑扩大规模。
+
+
+二、新增模块实现
+
+本阶段新增文件如下：
+
+1. rerank_config.py
+2. 4.retrieval/evidence_relation_rerank.py
+
+其中：
+
+1. rerank_config.py 用于统一管理重排模块的参数，包括：
+   - 检索候选数 TOPK_RETRIEVAL
+   - 重排后保留数 TOPM_RERANK
+   - 证据句数量 EVIDENCE_SENT_NUM
+   - 直连验证阈值 DIRECT_VERIFY_THRESHOLD
+   - 各类评分权重
+
+2. evidence_relation_rerank.py 用于在第 4 阶段检索结果基础上执行关系候选重排，主要功能包括：
+   - 读取第 4 阶段输出 retrieval_from_train/dev/path-k20-docred_0-5.jsonl
+   - 读取第 3 阶段关系摘要 result_docred_dev_relation_summary_0-5.jsonl
+   - 读取原始文档 data/docred/dev.json
+   - 为每个实体对抽取证据句
+   - 结合检索相似度、摘要相似度、证据相似度、类型约束和距离特征计算关系分数
+   - 输出重排结果到 data/retrieval_rerank/dev/rerank-k20-docred_0-5.jsonl
+
+
+三、重排模块的主要实现逻辑
+
+证据感知关系重排模块对每个实体对执行以下流程：
+
+1. 从原始文档中抽取与 head/tail entity 相关的候选句：
+   - 优先抽取实体共现句
+   - 再补充 mention 所在句
+   - 若证据句数量不足，再用 relation summary 与全文句子的语义相似度补齐
+
+2. 对第 4 阶段召回的关系候选进行重新评分：
+
+   Score(r|h,t) = αS_retrieval + βS_summary + γS_evidence + δS_type + εS_distance
+
+3. 对候选关系进行排序并保留 top-m；
+
+4. 输出如下核心字段：
+   - title
+   - entity_h
+   - entity_t
+   - entities_description
+   - evidence_sentences
+   - candidate_relations
+   - top_relations
+   - routing_decision
+   - direct_relations
+   - multiple_choice_relations
+
+当前版本中，routing_decision 虽已实现，但仍统一走 multiple_choice，用于后续扩展 direct_verify 策略。
+
+
+四、已修改文件
+
+本阶段对以下文件进行了修改：
+
+1. 5.multiple_choice/multiple_choice_prompt.py
+2. 5.multiple_choice/multiple_choice_run.py
+3. 5.multiple_choice/check_result_multiple_choice_jsonl.py
+4. 6.triplet_fact_judgement/check_result_triplet_fact_judgement_jsonl.py
+
+各文件修改内容如下：
+
+1. 5.multiple_choice/multiple_choice_prompt.py
+   - 增加 get_prompt_source，优先读取 retrieval_rerank 输出，若不存在则回退到旧检索结果
+   - 将证据句、关系摘要接入第 5 阶段 prompt
+   - 将 instruction 改为严格要求输出选项字母
+   - 修复变量名 list 覆盖 Python 内置 list 的问题
+   - 增加自动创建输出目录逻辑
+
+2. 5.multiple_choice/multiple_choice_run.py
+   - 增强失败处理逻辑：模型服务不可用时，response 记为失败而不是伪完成
+   - data_name 改为支持环境变量 DATA_NAME
+   - 保证下游不会把空结果误当成有效结果
+
+3. 5.multiple_choice/check_result_multiple_choice_jsonl.py
+   - 将 response == [] 也视为无效响应
+   - 增加自动创建输出目录逻辑
+   - data_name 改为支持环境变量 DATA_NAME
+
+4. 6.triplet_fact_judgement/check_result_triplet_fact_judgement_jsonl.py
+   - 增加 response == [] 或 None 的统一空判断
+   - 增加更明确的日志输出
+   - 修复汇总阶段漏掉部分记录的问题
+
+
+五、阶段性验证过程
+
+本阶段验证采用的数据范围为：
+
+1. DATA_NAME = dev
+2. DOC_START = 0
+3. DOC_END = 5
+
+验证顺序如下：
+
+1. 独立运行 evidence_relation_rerank.py，验证新模块可执行；
+2. 检查 rerank 输出结构是否完整；
+3. 接入第 5 阶段 prompt 生成；
+4. 运行第 5 阶段并检查输出格式；
+5. 基于新的第 5 阶段结果运行第 6 阶段；
+6. 对最终三元组变化进行比较。
+
+
+六、阶段性验证结果
+
+1. 重排模块输出
+
+输出文件：
+data/retrieval_rerank/dev/rerank-k20-docred_0-5.jsonl
+
+验证结果：
+- 共 105 条，和第 3/4 阶段样本数对齐；
+- 每条均包含 evidence_sentences、candidate_relations、top_relations、routing_decision 等字段；
+- 当前所有样本 routing_decision 均为 multiple_choice，符合“第一版先接入第 5 阶段验证”的预期。
+
+2. 第 5 阶段 prompt 改造结果
+
+输出文件：
+data/multiple_choice_prompt/dev/multiple_choice_prompt-path-k20_dev-docred_0-5.jsonl
+
+验证结果：
+- prompt 数量由旧版 118 条降至 102 条；
+- prompt 中已经成功接入：
+  - Relation summary
+  - Evidence
+  - Text
+  - 精简后的候选关系
+
+说明 rerank 模块已经实际压缩了候选空间，并成功影响下游 prompt。
+
+3. 第 5 阶段运行结果
+
+输出文件：
+data/check_result_multiple_choice_jsonl/dev/result_docred_dev_multiple_choice_path-k20-docred_0-5.jsonl
+
+验证结果：
+- 共 102 条
+- 空响应 0
+- 特殊 token 0
+- 102/102 条响应都符合字母作答格式，例如：
+  - A
+  - B
+  - A,C
+
+与旧版本相比，之前模型会输出整句解释，现在已经变成稳定的选项字母响应，解析稳定性显著提高。
+
+4. 第 5 阶段标签结果
+
+输出文件：
+data/get_multiple_choice_label/dev/docred_dev_multiple_choice_path-k20-docred_0-5_answer.jsonl
+
+验证结果：
+- 最终得到 35 条候选关系
+
+5. 第 6 阶段运行结果
+
+输出文件：
+data/check_result_triplet_fact_judgement_jsonl/dev/result_docred_dev_triplet_fact_judgement_k20-docred_0-5.jsonl
+
+验证结果：
+- 第 6 阶段 prompt 数量：82
+- 第 6 阶段 run 数量：82
+- 第 6 阶段 check_result 数量：82
+- YES = 10
+- NO = 72
+
+说明第 6 阶段已经完整接收了新的第 5 阶段结果并完成事实验证。
+
+6. 最终三元组结果
+
+输出文件：
+data/get_triplet_fact_judgement_label/dev/docred_dev_triplet_fact_judgement_0-5_answer-k20-docred_0-5.jsonl
+
+最终结果为 4 条：
+
+1. {"title": "Conrad O. Johnson", "h_idx": 0, "t_idx": 7, "r": "P19"}
+2. {"title": "Lookin Ass", "h_idx": 0, "t_idx": 2, "r": "P175"}
+3. {"title": "Conrad O. Johnson", "h_idx": 0, "t_idx": 12, "r": "P69"}
+4. {"title": "Conrad O. Johnson", "h_idx": 0, "t_idx": 11, "r": "P69"}
+
+
+七、增益总结
+
+与未加入 rerank 模块前的旧版本相比，本阶段实现取得了以下增益：
+
+1. 候选空间压缩
+   - 第 5 阶段 prompt 数量由 118 降至 102
+   - 说明无效关系候选得到了一定程度压缩
+
+2. 输出格式显著改善
+   - 旧版本第 5 阶段模型经常输出解释句
+   - 新版本第 5 阶段 102/102 条均为标准字母作答
+   - 多选解析稳定性明显提高
+
+3. 最终结果有实际提升
+   - 旧版本最终三元组数量为 3
+   - 新版本最终三元组数量为 4
+   - 新增三元组为：
+     Conrad O. Johnson -> Houston College for Negroes -> educated at
+
+4. 工程鲁棒性增强
+   - 第 5 阶段和第 6 阶段都补充了失败保护和空响应判断
+   - 减少了无效结果误传下游的问题
+
+
+八、当前结论
+
+当前可以得出以下结论：
+
+1. 证据感知的关系重排模块第一版已经完成实现；
+2. 该模块已经成功串接到第 5 阶段和第 6 阶段；
+3. 在 dev 0-5 小样本上，该模块已经带来可观测增益；
+4. 当前版本可以视为该创新点的第一版可运行实现。
+
+
+九、后续工作建议
+
+下一阶段建议优先考虑以下方向：
+
+1. 扩大验证样本范围，如 dev 0-20 或 dev 0-50；
+2. 继续优化关系重排评分函数；
+3. 尝试启用 direct_verify 路由；
+4. 对比“原始框架”和“加入 rerank 模块后”的时间、token 和结果差异；
+5. 在功能稳定后，再进入可视化系统界面设计阶段。

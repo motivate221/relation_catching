@@ -41,6 +41,9 @@ def read_csv(csv_file):
     return data_list
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile, ensure_ascii = False)
@@ -98,7 +101,7 @@ def get_similar_id(entity, entity_list, model, docred_df, doc_id):
 
 
 
-data_name = "dev"
+data_name = os.getenv("DATA_NAME", "dev")
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -114,7 +117,7 @@ rel_info = eval(rel_info)
 
 reverse_rel_info = {v: k for k, v in rel_info.items()}
 
-save_doc_name = "01"
+save_doc_name = os.getenv("SAMPLE_TAG", "01")
 
 file_path = f"../data/check_result_entity_pair_selection_jsonl/{data_name}/result_{doc_name}_{data_name}_entity_pair_selection_{range_tag}-{save_doc_name}.jsonl"
 jsonl_data = read_jsonl(file_path)

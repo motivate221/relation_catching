@@ -20,6 +20,14 @@ DEVICE_MAP = "auto" if DEVICE == "cuda" else None
 MODEL_PATH = os.getenv("MODEL_PATH", "../model-path/")
 
 
+def safe_print(text):
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        fallback_text = str(text).encode("gbk", errors="replace").decode("gbk", errors="replace")
+        print(fallback_text)
+
+
 def torch_gc():
     if torch.cuda.is_available():
         with torch.cuda.device(CUDA_DEVICE):
@@ -136,19 +144,19 @@ async def create_item(request: Request):
 
     now = datetime.datetime.now()
     time = now.strftime("%Y-%m-%d %H:%M:%S")
-    print(time)
-    print(response_list)
+    safe_print(time)
+    safe_print(response_list)
 
     torch_gc()
     return response_list
 
 
 if __name__ == '__main__':
-    print(f"MODEL_PATH={MODEL_PATH}")
-    print(f"DEVICE={DEVICE}")
-    print(f"CUDA_AVAILABLE={torch.cuda.is_available()}")
-    print(f"MODEL_LOAD_IN_4BIT={get_bool_env('MODEL_LOAD_IN_4BIT', True)}")
-    print(f"MODEL_LOAD_IN_8BIT={get_bool_env('MODEL_LOAD_IN_8BIT', False)}")
+    safe_print(f"MODEL_PATH={MODEL_PATH}")
+    safe_print(f"DEVICE={DEVICE}")
+    safe_print(f"CUDA_AVAILABLE={torch.cuda.is_available()}")
+    safe_print(f"MODEL_LOAD_IN_4BIT={get_bool_env('MODEL_LOAD_IN_4BIT', True)}")
+    safe_print(f"MODEL_LOAD_IN_8BIT={get_bool_env('MODEL_LOAD_IN_8BIT', False)}")
 
     model, tokenizer = load_model_and_tokenizer()
     uvicorn.run(app, host='127.0.0.1', port=6006, workers=1)

@@ -1,0 +1,29 @@
+{
+    "data_name":  "dev",
+    "doc_start":  0,
+    "doc_end":  -1,
+    "latest_log_dir":  "D:\\Asoftwares\\new_bishe\\EP-RSR-main\\logs\\pipeline_dev_0-full_20260407_225704",
+    "updated_at":  "2026-04-08T01:47:22",
+    "completed_steps":  [
+                            "01_entity_pair_selection_prompt",
+                            "02_entity_pair_selection_run",
+                            "03_entity_pair_selection_check",
+                            "04_entity_pair_selection_label",
+                            "05_entity_information_prompt",
+                            "06_entity_information_run",
+                            "07_entity_information_check",
+                            "08_relation_summary_prompt",
+                            "09_relation_summary_run",
+                            "10_relation_summary_check",
+                            "11_get_embeddings",
+                            "12_retrieval_from_train",
+                            "13_evidence_relation_rerank",
+                            "14_multiple_choice_prompt",
+                            "15_multiple_choice_run",
+                            "16_multiple_choice_check",
+                            "17_multiple_choice_label",
+                            "18_triplet_fact_judgement_prompt",
+                            "19_triplet_fact_judgement_run",
+                            "20_triplet_fact_judgement_check"
+                        ]
+}

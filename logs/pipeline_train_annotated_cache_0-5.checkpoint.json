@@ -1,0 +1,16 @@
+{
+    "data_name":  "train_annotated",
+    "doc_start":  0,
+    "doc_end":  5,
+    "latest_log_dir":  "D:\\Asoftwares\\new_bishe\\EP-RSR-main\\logs\\pipeline_train_annotated_cache_0-5_20260407_002940",
+    "updated_at":  "2026-04-07T00:30:42",
+    "completed_steps":  [
+                            "01_entity_information_prompt",
+                            "02_entity_information_run",
+                            "03_entity_information_check",
+                            "04_relation_summary_prompt",
+                            "05_relation_summary_run",
+                            "06_relation_summary_check",
+                            "07_get_embeddings"
+                        ]
+}

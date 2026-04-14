@@ -20,6 +20,9 @@ def get_doc_title(doc_id, df):
     return title
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile)
@@ -68,7 +71,7 @@ def get_entity_id(entity, df, doc_id):
     return -1
 
 
-data_name = "dev"
+data_name = os.getenv("DATA_NAME", "dev")
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'

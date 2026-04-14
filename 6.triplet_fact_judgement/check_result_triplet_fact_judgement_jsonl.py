@@ -1,11 +1,12 @@
 import json
-import math
+import glob
 import os
+import re
 import sys
 import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+from pipeline_config import append_method_tag, get_doc_range, get_method_tag, get_range_tag, read_json_file_as_df
 
 def read_jsonl(file_path):
     data = []
@@ -24,7 +25,24 @@ def save_to_jsonl(data, jsonl_file):
             jsonlfile.write('\n')
 
 
+def is_empty_response(response):
+    return response == "" or response == [] or response is None
+
+
+def list_shard_files(pattern):
+    shard_files = glob.glob(pattern)
+    shard_files.sort(
+        key=lambda file_path: int(re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path)).group(1))
+        if re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path))
+        else 10**9
+    )
+    if not shard_files:
+        raise FileNotFoundError(f"No shard file matched pattern: {pattern}")
+    return shard_files
+
+
 data_name = os.getenv("DATA_NAME", "dev")
+method_tag = get_method_tag()
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -34,28 +52,24 @@ docred_len = len(docred_df)
 doc_start, doc_end = get_doc_range(docred_len)
 range_tag = get_range_tag(doc_start, doc_end)
 
-file_path = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_k20-{doc_name}_{range_tag}.jsonl"
-
-save_doc_name = f"k20-{doc_name}_{range_tag}"
+save_doc_name = append_method_tag(f"k20-{doc_name}_{range_tag}", method_tag)
+file_path = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_{save_doc_name}.jsonl"
 
 jsonl_data = read_jsonl(file_path)
 
-len_data = len(jsonl_data)
-
 cnt = 0
-start = 0
-end = math.ceil(len_data / 200)
-print("all doc number:",end)
+shard_pattern = f"../data/triplet_fact_judgement_run/{data_name}/{save_doc_name}/result_{doc_name}_{data_name}_triplet_fact_judgement-{save_doc_name}_*.jsonl"
+shard_files = list_shard_files(shard_pattern)
+print("all doc number:", len(shard_files))
 
 save_list = []
 
-for jsonl_id in range(start, end):
-
-    jsonl_file_path = f"../data/triplet_fact_judgement_run/{data_name}/{save_doc_name}/result_{doc_name}_{data_name}_triplet_fact_judgement-{save_doc_name}_{jsonl_id}.jsonl"
+for jsonl_file_path in shard_files:
     jsonl_data = read_jsonl(jsonl_file_path)
+    print(f"loaded {len(jsonl_data)} records from {jsonl_file_path}")
 
     for item in jsonl_data:
-        if item['response'] == "":
+        if is_empty_response(item['response']):
             cnt += 1
             print("-------------------There is an empty response------------------")
         else:
@@ -71,6 +85,7 @@ for jsonl_id in range(start, end):
             data_dict["response"] = item["response"]
             save_list.append(data_dict)
 
+print(f"final saved record count: {len(save_list)}")
 
 save_path = f"../data/check_result_triplet_fact_judgement_jsonl/{data_name}/result_{doc_name}_{data_name}_triplet_fact_judgement_{save_doc_name}.jsonl"
 save_to_jsonl(save_list, save_path)

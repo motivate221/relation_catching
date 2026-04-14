@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+from pipeline_config import append_method_tag, get_doc_range, get_method_tag, get_range_tag, read_json_file_as_df
 
 
 def save_to_jsonl(data, jsonl_file):
@@ -95,6 +95,7 @@ def run_list(prompt_list):
 
 
 data_name = os.getenv("DATA_NAME", "dev")
+method_tag = get_method_tag()
 doc_name = "docred"
 
 doc_dir = f'../data/{doc_name}/'
@@ -104,8 +105,8 @@ docred_len = len(docred_df)
 doc_start, doc_end = get_doc_range(docred_len)
 range_tag = get_range_tag(doc_start, doc_end)
 
-file_path = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_k20-{doc_name}_{range_tag}.jsonl"
-save_doc_name = f"k20-{doc_name}_{range_tag}"
+save_doc_name = append_method_tag(f"k20-{doc_name}_{range_tag}", method_tag)
+file_path = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_{save_doc_name}.jsonl"
 
 jsonl_data = read_jsonl(file_path)
 

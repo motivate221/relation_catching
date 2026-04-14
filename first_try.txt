@@ -1,0 +1,88 @@
+
+复现记录
+
+本次复现基于 DocRED 非 RTE 主链，在本地 llama3 环境中完成了 5 篇 dev 样本 的端到端调试。运行范围通过环境变量控制为：
+
+$env:DATA_NAME='dev'
+$env:DOC_START='0'
+$env:DOC_END='5'
+模型服务使用本地 Qwen2.5-3B-Instruct ，以 4bit 量化方式通过 llama3-api.py 提供 http://127.0.0.1:6006 接口。Embedding 模型使用本地 all-mpnet-base。
+
+六阶段流水线结果
+
+实体对筛选 entity_pair_selection
+输入为 5 篇文档，生成 prompt 文件 entity_pair_selection_prompt_dev_01_docred_0-5.jsonl。
+运行结果文件为 result_docred_dev_entity_pair_selection-01_0-5_0.jsonl，共 5 条，已成功去除特殊 token。
+解析后得到候选实体对标签文件 docred_dev_entity_pair_selection_0-5_answer-01.jsonl，共 92 条候选边。
+
+实体信息补全 entity_information
+依据阶段 1 的候选实体集合生成 prompt 文件 prompt_docred_dev_entity_information_doc0-5.jsonl。
+最终结果文件 result_docred_dev_entity_information_0-5.jsonl 共 61 条实体描述，无空响应。
+
+关系摘要生成 relation_summary
+对候选实体对生成关系语义摘要，prompt 文件为 result_docred_dev_doc0-5.jsonl。
+最终汇总结果 result_docred_dev_relation_summary_0-5.jsonl 共 105 条关系摘要样本。本阶段已将 max_new_tokens 从 50 调整到 100，以减少摘要截断。
+
+检索增强 retrieval
+先额外构建了一个小型训练侧检索库：train_annotated 0-20。训练侧文件 path-k20-docred_0-20.jsonl 成功生成。
+在此基础上，对 dev 0-5 进行检索，得到 path-k20-docred_0-5.jsonl，共 105 条检索结果。
+说明：由于训练侧仅使用前 20 篇样本构建检索库，本阶段结果仅用于调试整链，不能代表正式实验质量。
+
+多项选择 multiple_choice
+Prompt 文件为 multiple_choice_prompt-path-k20_dev-docred_0-5.jsonl，共 118 条。
+汇总结果文件 result_docred_dev_multiple_choice_path-k20-docred_0-5.jsonl 共 118 条，空响应为 0。
+解析后得到 docred_dev_multiple_choice_path-k20-docred_0-5_answer.jsonl，共 31 条候选关系。
+备注：本阶段仍存在一个已知问题，即模型常输出整句解释而非纯选项字母，当前解析规则偏松，可能引入少量误判。
+
+三元组事实判定 triplet_fact_judgement
+Prompt 文件为 triplet_fact_judgement_prompt_dev_k20-docred_0-5.jsonl，共 70 条。
+在调试过程中，原始 prompt 未明确要求输出 YES/NO，导致最终标签文件为空。之后对第六阶段进行了两项严格修复：
+
+在 prompt 中明确要求“只输出 YES 或 NO”
+在解析脚本中使用独立单词级 YES/NO 识别，而非宽松字符串包含判断
+修复后，汇总结果文件 result_docred_dev_triplet_fact_judgement_k20-docred_0-5.jsonl 共 70 条，其中 YES=4，NO=66。
+去重后最终得到 docred_dev_triplet_fact_judgement_0-5_answer-k20-docred_0-5.jsonl，共 3 条最终三元组：
+{"title": "Conrad O. Johnson", "h_idx": 0, "t_idx": 12, "r": "P69"}
+{"title": "Lookin Ass", "h_idx": 0, "t_idx": 2, "r": "P175"}
+{"title": "Conrad O. Johnson", "h_idx": 0, "t_idx": 7, "r": "P19"}
+数量变化总结
+
+本次 5 篇样本的数量漏斗为：
+
+文档数：5
+阶段 1 候选实体对：92
+阶段 2 实体描述：61
+阶段 3 关系摘要：105
+阶段 4 检索结果：105
+阶段 5 多选候选关系：31
+阶段 6 事实判定样本：70
+阶段 6 判定为 YES：4
+最终去重后三元组：3
+该结果符合“粗筛 -> 检索 -> 细筛 -> 最终判定”的级联式 DocRE 流程特征。
+
+本次复现中的关键工程修复
+
+为了使代码能在本地小样本上跑通，进行了若干最小化工程修复，主要包括：
+
+将多个 run.py 中的 curl + eval 调用改为 requests.post(...).json()，提升 Windows 环境稳定性
+清理模型输出中的特殊 token，如 <|im_end|>、<|endoftext|>、<|eot_id|>
+引入统一的小样本范围控制：DOC_START / DOC_END
+引入 DATA_NAME 以支持 dev 与 train_annotated 的切换
+自动创建输出目录，避免 FileNotFoundError
+将第六阶段 prompt 严格约束为二分类输出 YES/NO
+将第六阶段标签解析改为严格匹配独立的 YES/NO
+这些修改主要属于运行适配和输出格式约束，未改变该方法的核心六阶段算法逻辑。
+
+当前复现状态判断
+
+本次 dev 0-5 小样本实验已经完成了从阶段 1 到阶段 6 的完整闭环，说明该仓库在本地环境中已经具备可运行性。
+当前结果可用于：
+
+论文方法流程说明
+可视化系统的阶段式页面设计
+后续改进实验的基线链路验证
+但仍不建议直接将本次结果视为正式实验结果，原因在于：
+
+第四阶段训练侧检索库仅使用 train_annotated 0-20
+第五阶段多选解析仍存在一定误判风险
+个别文本中仍可见编码显示异常

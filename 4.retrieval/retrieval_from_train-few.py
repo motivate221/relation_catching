@@ -3,6 +3,7 @@ import torch
 import os
 import sys
 import glob
+import re
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -10,6 +11,15 @@ from sentence_transformers import SentenceTransformer, util
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+
+
+def safe_print(*args, **kwargs):
+    try:
+        print(*args, **kwargs)
+    except UnicodeEncodeError:
+        text = " ".join(str(arg) for arg in args)
+        safe_text = text.encode("gbk", errors="ignore").decode("gbk", errors="ignore")
+        print(safe_text, **kwargs)
 
 def cos(emb1,emb2):
     return util.pytorch_cos_sim(emb1, emb2)
@@ -31,13 +41,55 @@ def save_to_jsonl(data, jsonl_file):
             jsonlfile.write('\n')
 
 
-def find_single_file(pattern):
-    matched_files = sorted(glob.glob(pattern))
-    if not matched_files:
-        raise FileNotFoundError(f"No file matched pattern: {pattern}")
-    if len(matched_files) > 1:
-        print(f"multiple files matched {pattern}, using {matched_files[0]}")
-    return matched_files[0]
+def extract_range_tag(file_path):
+    file_name = os.path.basename(file_path)
+    match = re.search(r'_(\d+-\d+)\.(jsonl|npy)$', file_name)
+    if not match:
+        return None
+    return match.group(1)
+
+
+def parse_range_tag(range_tag):
+    start_str, end_str = range_tag.split('-')
+    start = int(start_str)
+    end = int(end_str)
+    return start, end
+
+
+def choose_largest_common_cache_pair(jsonl_pattern, npy_pattern):
+    jsonl_files = sorted(glob.glob(jsonl_pattern))
+    npy_files = sorted(glob.glob(npy_pattern))
+
+    if not jsonl_files:
+        raise FileNotFoundError(f"No file matched pattern: {jsonl_pattern}")
+    if not npy_files:
+        raise FileNotFoundError(f"No file matched pattern: {npy_pattern}")
+
+    jsonl_by_tag = {}
+    for file_path in jsonl_files:
+        range_tag = extract_range_tag(file_path)
+        if range_tag is not None:
+            jsonl_by_tag[range_tag] = file_path
+
+    npy_by_tag = {}
+    for file_path in npy_files:
+        range_tag = extract_range_tag(file_path)
+        if range_tag is not None:
+            npy_by_tag[range_tag] = file_path
+
+    common_range_tags = sorted(set(jsonl_by_tag.keys()) & set(npy_by_tag.keys()))
+    if not common_range_tags:
+        raise FileNotFoundError(
+            "No common range tag found between train relation-summary cache and train embeddings cache."
+        )
+
+    def sort_key(range_tag):
+        start, end = parse_range_tag(range_tag)
+        span = end - start
+        return (span, end, -start)
+
+    best_range_tag = max(common_range_tags, key=sort_key)
+    return jsonl_by_tag[best_range_tag], npy_by_tag[best_range_tag], best_range_tag
 
 def get_docid(title, df):
     for doc_id in range(len(df)):
@@ -78,8 +130,9 @@ rel_info = eval(rel_info)
 reverse_rel_info = {v: k for k, v in rel_info.items()}
 
 
-train_file_path = find_single_file(
-    f"../data/check_result_relation_summary_jsonl/train_annotated/result_{doc_name}_train_annotated_relation_summary_*.jsonl"
+train_file_path, train_embeddings_file_path, train_cache_range_tag = choose_largest_common_cache_pair(
+    f"../data/check_result_relation_summary_jsonl/train_annotated/result_{doc_name}_train_annotated_relation_summary_*.jsonl",
+    f"../data/get_embeddings/{doc_name}_train_annotated_embeddings_*.npy"
 )
 train_annotated_jsonl_data = read_jsonl(train_file_path)
 
@@ -87,20 +140,21 @@ train_annotated_jsonl_data = read_jsonl(train_file_path)
 dev_file_path = f"../data/check_result_relation_summary_jsonl/{data_name}/result_{doc_name}_{data_name}_relation_summary_{range_tag}.jsonl"
 dev_jsonl_data = read_jsonl(dev_file_path)
 
-print("data loading successful")
-print('--------------------------------------')
+safe_print("data loading successful")
+safe_print('--------------------------------------')
 
-train_embeddings_file_path = find_single_file(
-    f"../data/get_embeddings/{doc_name}_train_annotated_embeddings_*.npy"
-)
 train_embeddings = np.load(train_embeddings_file_path)
-print("train_embeddings loading successful")
-print('--------------------------------------')
+safe_print("train_embeddings loading successful")
+safe_print('--------------------------------------')
+safe_print(f"train cache range selected: {train_cache_range_tag}")
+safe_print(f"train relation summary cache: {train_file_path}")
+safe_print(f"train embeddings cache: {train_embeddings_file_path}")
+safe_print('--------------------------------------')
 
 
 dev_embeddings = np.load(f'../data/get_embeddings/{doc_name}_{data_name}_embeddings_{range_tag}.npy')
-print("dev_embeddings loading successful")
-print('--------------------------------------')
+safe_print("dev_embeddings loading successful")
+safe_print('--------------------------------------')
 
 dev_len = len(dev_jsonl_data)
 
@@ -112,11 +166,11 @@ threshold = 0.0
 
 dev_top_all = {}
 
-print("data len:", dev_len)
+safe_print("data len:", dev_len)
 
 
 for id in range(dev_len):
-    print(id)
+    safe_print(id)
     query_sentence = dev_jsonl_data[id]['entities_description']
     entity_h_id = dev_jsonl_data[id]["entity_h_id"]
     entity_t_id = dev_jsonl_data[id]["entity_t_id"]
@@ -172,7 +226,7 @@ for id in range(dev_len):
 
 
         cnt += 1
-    print("-----------------------------")
+    safe_print("-----------------------------")
 
 
 
@@ -224,7 +278,7 @@ for key, value in dev_result_rel.items():
         save_result_rel[key][key_1] = {}
         for key_2, value_2 in value_1.items():
             save_result_rel[key][key_1][key_2] = []
-            print(f"doc:{key} entity_h:{key_1} entity_t:{key_2} relation number:{len(value_2)}")
+            safe_print(f"doc:{key} entity_h:{key_1} entity_t:{key_2} relation number:{len(value_2)}")
 
 
             predict_rel_list = {}
@@ -257,4 +311,4 @@ for data in dev_jsonl_data:
 
 save_name = f"../data/retrieval_from_train/{data_name}/path-k20-{doc_name}_{range_tag}.jsonl"
 save_to_jsonl(save_list, save_name)
-print(f"The result is saved in the file {save_name}")
+safe_print(f"The result is saved in the file {save_name}")

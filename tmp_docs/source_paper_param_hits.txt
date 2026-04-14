@@ -1,0 +1,403 @@
+pdf: 2025_洪森_findings_naacl.pdf
+pages: 16
+hits: 128
+
+Likely config pages:
+- p14 score=120
+- p12 score=47
+- p6 score=33
+- p11 score=33
+- p7 score=26
+- p4 score=14
+- p5 score=10
+- p10 score=10
+- p2 score=6
+- p8 score=6
+- p3 score=5
+- p1 score=1
+
+Top snippets:
+[p6] score=5 kw=parameter settings
+We only fine-tune the LLM for entity pair selec- tion, multiple-choice QA in Section 3.4, and triple fact judgment stages. Fine-tuning parameters and inference parameter settings at each stage can be found in the Appendix B. The prompt templates for each stage are shown in the Appendix C. In addition, the experimental analysis of the k in top-k candidate relations retrieval and the k-times multi-sampling in entity pair selection are detailed in Appendix 
+------------------------------------------------------------------------------------------
+[p11] score=5 kw=parameter settings
+ pair selection, multiple-choice QA, and triple fact judgment stages, the parameters of LLM fine-tuning are shown in the Table 12. B.2 Inference Parameters The parameter settings for LLMs inference at each stage are shown in the Table 8. Stage temperature top_p Entity information 0.9 0.9 Relation summarization 0.9 0.9 Entity pair selection 0.9 0.9 Multiple-choice QA 0.0001 0.9 Triplet fact judgment 0.1 0.9 Table 8: Inference parameters at each stage. C P
+------------------------------------------------------------------------------------------
+[p11] score=5 kw=temperature
+ of LLM fine-tuning are shown in the Table 12. B.2 Inference Parameters The parameter settings for LLMs inference at each stage are shown in the Table 8. Stage temperature top_p Entity information 0.9 0.9 Relation summarization 0.9 0.9 Entity pair selection 0.9 0.9 Multiple-choice QA 0.0001 0.9 Triplet fact judgment 0.1 0.9 Table 8: Inference parameters at each stage. C Prompt Templates We use different prompts for LLM in different ex- perimental 
+------------------------------------------------------------------------------------------
+[p11] score=5 kw=top_p
+-tuning are shown in the Table 12. B.2 Inference Parameters The parameter settings for LLMs inference at each stage are shown in the Table 8. Stage temperature top_p Entity information 0.9 0.9 Relation summarization 0.9 0.9 Entity pair selection 0.9 0.9 Multiple-choice QA 0.0001 0.9 Triplet fact judgment 0.1 0.9 Table 8: Inference parameters at each stage. C Prompt Templates We use different prompts for LLM in different ex- perimental stages
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+er of relation labels 0 20 40 60 80 F1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0,
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=rank
+ relation labels 0 20 40 60 80 F1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warm
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+labels 0 20 40 60 80 F1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=alpha
+s 0 20 40 60 80 F1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, b
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+ 80 F1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true T
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=dropout
+1 of relations F1 of relations Figure 5: Analysis of long-tail problem in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet f
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=epoch
+em in train set. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, c
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=warmup
+et. Stage Parameter Entity pair selection lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 204
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+nk: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=rank
+4, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, w
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+pha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_rati
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=alpha
+128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+opout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: tru
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=dropout
+: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=epoch
+ 5.0, warmup_ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The tex
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=warmup
+ratio: 0.1, bf16: true Multiple-choice QA lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follow
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+ 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example,
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=rank
+lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US i
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a countr
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=alpha
+, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a country and 
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=lora
+ut: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a country and 12 is a num
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=dropout
+.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a country and 12 is a number) Ans
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=epoch
+0, warmup_ratio: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a country and 12 is a number) Answer in one sentence. Only output answers without outputting anythi
+------------------------------------------------------------------------------------------
+[p14] score=5 kw=warmup
+io: 0.1, bf16: true Triplet fact judgment lora_rank: 64, lora_alpha: 128, lora_dropout: 0.05, cutoff_len: 2048, learn- ing_rate: 1.0e-4, num_train_epochs: 1.0, warmup_ratio: 0.1, bf16: true Table 12: Fine-tuned parameters. Stage Prompt Entity information The text is as follows: {title} {doc} What is "{entity}"? (For example, US is a country and 12 is a number) Answer in one sentence. Only output answers without outputting anything else. The a
+------------------------------------------------------------------------------------------
+[p3] score=3 kw=threshold
+ pre-trained language models BERT (Devlin et al., 2019) and RoBERTa (Liu et al., 2019) in this domain has proliferated, encompass- ing approaches like adaptive thresholding with lo- cal context pooling (Zhou et al., 2021), knowledge distillation strategies (Ma et al., 2023), and train- able memory module (Gao et al., 2024). 2.2 LLM-based DocRE With the immense potential of LLMs increasingly evident across various domains (Wang et al., 2023a; Zho
+------------------------------------------------------------------------------------------
+[p4] score=3 kw=sampling
+ut an instruction I, a document D, and a set of entities V ={ei}ne i=1. It employs LLMs to perform k random sampling, resulting in an entity pair set Pi in one sampling iteration. Pi = LLM (I, D, V). (1) Selecting entity pairs that potentially contain relations. During each sampling iteration, entity pairs are filtered based on their cosine similarity to the true entities in the dataset. This filtering process uses a threshold T to obtain the s
+------------------------------------------------------------------------------------------
+[p4] score=3 kw=sampling
+g, resulting in an entity pair set Pi in one sampling iteration. Pi = LLM (I, D, V). (1) Selecting entity pairs that potentially contain relations. During each sampling iteration, entity pairs are filtered based on their cosine similarity to the true entities in the dataset. This filtering process uses a threshold T to obtain the set of valid entity pairs P i : P i ={(eh, et)Pi|sim(eh, e h) > T, sim(et, e t) > T}, (2) where e h, e tV , 
+------------------------------------------------------------------------------------------
+[p4] score=3 kw=threshold
+. During each sampling iteration, entity pairs are filtered based on their cosine similarity to the true entities in the dataset. This filtering process uses a threshold T to obtain the set of valid entity pairs P i : P i ={(eh, et)Pi|sim(eh, e h) > T, sim(et, e t) > T}, (2) where e h, e tV , sim(eh, e h) denotes the cosine similarity between the entity eh and the entity e h (similar to sim(et, e t)). 4025
+------------------------------------------------------------------------------------------
+[p5] score=3 kw=Retrieval
+) R s(eh, et) = E(eh) + E(et) + R(h,t) s , (7) where + represents the concatenation of strings and the entity pair (eh, et)Pe. 3.4 Entity-pair-level Relation Retrieval To obtain candidate relations, we propose an entity- pair-level relation retrieval method. The method retrieves the top-k candidate relations by double filtering from our pre-constructed training dataTD based on the relation summarization corresponding to an entity pair. Pre-con
+------------------------------------------------------------------------------------------
+[p5] score=3 kw=retrieval
+n of strings and the entity pair (eh, et)Pe. 3.4 Entity-pair-level Relation Retrieval To obtain candidate relations, we propose an entity- pair-level relation retrieval method. The method retrieves the top-k candidate relations by double filtering from our pre-constructed training dataTD based on the relation summarization corresponding to an entity pair. Pre-constructed training dataTD: The train- ing data is constructed from the train setT of
+------------------------------------------------------------------------------------------
+[p5] score=3 kw=top-k
+e. 3.4 Entity-pair-level Relation Retrieval To obtain candidate relations, we propose an entity- pair-level relation retrieval method. The method retrieves the top-k candidate relations by double filtering from our pre-constructed training dataTD based on the relation summarization corresponding to an entity pair. Pre-constructed training dataTD: The train- ing data is constructed from the train setT of the dataset. Specifically, for each en
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=Experimental Setup
+r). If the output is "NO", it is inferred that there is no relation between the entity pair (eh, et), and the model does not output anything. 4 Experiments 4.1 Experimental Setup and Baselines Dataset We conducted experiments on three DocRE datasets: DocRED (Yao et al., 2019), its revised version Re-DocRED (Tan et al., 2022), and a new gold-annotated dataset DWIE (Zaporojets et al., 2021). The detailed statistics of the datasets can be found in Appendix 
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=DocRED
+ (eh, et), and the model does not output anything. 4 Experiments 4.1 Experimental Setup and Baselines Dataset We conducted experiments on three DocRE datasets: DocRED (Yao et al., 2019), its revised version Re-DocRED (Tan et al., 2022), and a new gold-annotated dataset DWIE (Zaporojets et al., 2021). The detailed statistics of the datasets can be found in Appendix A. Evaluation Metrics We employ F1 and Ign F1 as main evaluation metrics follow
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=DocRED
+ 4 Experiments 4.1 Experimental Setup and Baselines Dataset We conducted experiments on three DocRE datasets: DocRED (Yao et al., 2019), its revised version Re-DocRED (Tan et al., 2022), and a new gold-annotated dataset DWIE (Zaporojets et al., 2021). The detailed statistics of the datasets can be found in Appendix A. Evaluation Metrics We employ F1 and Ign F1 as main evaluation metrics following (Yao et al., 2019). Ign F1 is employed to asse
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=Llama
+l., 2019). Ign F1 is employed to assess the F1 score while excluding relations shared between the train- ing and test sets. Implementation Settings We utilized Llama3- 8B (Touvron et al., 2023) as primary model for our experimental framework, and employed the Sentence-Transformer model all-mpnet-base (Reimers and Gurevych, 2019). We use Llama- Factory (Zheng et al., 2024) framework to fine-tune LLM based on LoRA (Hu et al., 2022). Our ex- pe
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=8B
+). Ign F1 is employed to assess the F1 score while excluding relations shared between the train- ing and test sets. Implementation Settings We utilized Llama3- 8B (Touvron et al., 2023) as primary model for our experimental framework, and employed the Sentence-Transformer model all-mpnet-base (Reimers and Gurevych, 2019). We use Llama- Factory (Zheng et al., 2024) framework to fine-tune LLM based on LoRA (Hu et al., 2022). Our ex- perimen
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=Llama
+ et al., 2023) as primary model for our experimental framework, and employed the Sentence-Transformer model all-mpnet-base (Reimers and Gurevych, 2019). We use Llama- Factory (Zheng et al., 2024) framework to fine-tune LLM based on LoRA (Hu et al., 2022). Our ex- periments were predominantly conducted on three NVIDIA 3090 GPUs for fine-tuned, with inference operations carried out on a single 4090 GPU. We only fine-tune the LLM for entity pai
+------------------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+oyed the Sentence-Transformer model all-mpnet-base (Reimers and Gurevych, 2019). We use Llama- Factory (Zheng et al., 2024) framework to fine-tune LLM based on LoRA (Hu et al., 2022). Our ex- periments were predominantly conducted on three NVIDIA 3090 GPUs for fine-tuned, with inference operations carried out on a single 4090 GPU. We only fine-tune the LLM for entity pair selec- tion, multiple-choice QA in Section 3.4, and triple fact judgm
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=Llama
+4)* 56.53 52.74 56.38 49.31 Ours (EP-RSR) 70.23 66.32 74.38 69.56 Table 2: Performance on the DWIE dataset for DocRE. Results with * are our reproduction using Llama3-8B. Model F1 Ign F1 Our Method 53.77 51.25 w/o Entity pair selection 21.83 19.12 w/o Entity information 51.51 49.25 w/o Entity-pair-level candidate relations 47.00 45.57 w/o Triplet fact judgement 47.65 44.49 Table 3: Ablation study on the DocRED. Moreover, compared to non-fine
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=8B
+53 52.74 56.38 49.31 Ours (EP-RSR) 70.23 66.32 74.38 69.56 Table 2: Performance on the DWIE dataset for DocRE. Results with * are our reproduction using Llama3-8B. Model F1 Ign F1 Our Method 53.77 51.25 w/o Entity pair selection 21.83 19.12 w/o Entity information 51.51 49.25 w/o Entity-pair-level candidate relations 47.00 45.57 w/o Triplet fact judgement 47.65 44.49 Table 3: Ablation study on the DocRED. Moreover, compared to non-fine-tun
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=Ablation
+ selection 21.83 19.12 w/o Entity information 51.51 49.25 w/o Entity-pair-level candidate relations 47.00 45.57 w/o Triplet fact judgement 47.65 44.49 Table 3: Ablation study on the DocRED. Moreover, compared to non-fine-tuned methods, our model demonstrates a significant performance breakthrough, achieving an improvement of ap- proximately 21.56 in F1 on DocRED dev set over the ChatGPT-based DocRE baseline (Han et al., 2023), thereby exhibitin
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=DocRED
+ w/o Entity information 51.51 49.25 w/o Entity-pair-level candidate relations 47.00 45.57 w/o Triplet fact judgement 47.65 44.49 Table 3: Ablation study on the DocRED. Moreover, compared to non-fine-tuned methods, our model demonstrates a significant performance breakthrough, achieving an improvement of ap- proximately 21.56 in F1 on DocRED dev set over the ChatGPT-based DocRE baseline (Han et al., 2023), thereby exhibiting a greater degree o
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=Ablation
+24)). Our LLM- based results further narrows the performance gap with the latest traditional small models, making it a promising approach for future DocRE. 4.3 Ablation Study To evaluate the contribution of each module to the models performance, we conducted an ablation study on DocRED dev set, as illustrated in Table 3. Our observations include the following aspects: Impact of entity pair selection Entity pair se- lection is very effective fo
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=ablation
+ls, making it a promising approach for future DocRE. 4.3 Ablation Study To evaluate the contribution of each module to the models performance, we conducted an ablation study on DocRED dev set, as illustrated in Table 3. Our observations include the following aspects: Impact of entity pair selection Entity pair se- lection is very effective for LLM-based approach on DocRE task. Removing it leads to a sharp drop in performance. F1 and Ign F1 dro
+------------------------------------------------------------------------------------------
+[p7] score=3 kw=DocRED
+omising approach for future DocRE. 4.3 Ablation Study To evaluate the contribution of each module to the models performance, we conducted an ablation study on DocRED dev set, as illustrated in Table 3. Our observations include the following aspects: Impact of entity pair selection Entity pair se- lection is very effective for LLM-based approach on DocRE task. Removing it leads to a sharp drop in performance. F1 and Ign F1 drop by 31.94 and 3
+------------------------------------------------------------------------------------------
+[p8] score=3 kw=ablation
+d 6.76. It indicates that our method enables LLMs to better understand relations and facilitates more accurate relation extraction. In addition, we conduct the ablation analysis on the multiple-choice QA and prior knowledge used in the fine filtering of candidate relations of Section 3.4, and the results are detailed in Appendix F. 4.4 Assessment of the effectiveness in alleviating NA problem To further illustrate that our approach alleviates t
+------------------------------------------------------------------------------------------
+[p8] score=3 kw=ablation
+lysis of the effectiveness of alleviating the NA problem. 4.5 Further Analysis of candidate relations at the entity-pair-level and document-level The preceding ablation study has demonstrated the effectiveness of entity-pair-level candidate rela- tions. To further investigate their significance, we replace the coarse filtering of candidate relations in Section 3.4 with document-level candidate rela- tions and only calculate the F1 of this part 
+------------------------------------------------------------------------------------------
+[p10] score=3 kw=Lora
+Chen. 2022. Lora: Low-rank adaptation of large language models. In International Conference on Learning Representations. Junpeng Li, Zixia Jia, and Zilong Zheng. 2023. Semi- automatic data enhancement for document-level re- lation extraction with distant supervision from large language models. I
+------------------------------------------------------------------------------------------
+[p10] score=3 kw=rank
+Chen. 2022. Lora: Low-rank adaptation of large language models. In International Conference on Learning Representations. Junpeng Li, Zixia Jia, and Zilong Zheng. 2023. Semi- automatic data enhancement for document-level re- lation extraction with distant supervision from large language models. In Proceedi
+------------------------------------------------------------------------------------------
+[p11] score=3 kw=threshold
+nical relation extraction. medRxiv, pages 202312. Wenxuan Zhou, Kevin Huang, Tengyu Ma, and Jing Huang. 2021. Document-level relation extraction with adaptive thresholding and localized context pool- ing. In Proceedings of the AAAI conference on artifi- cial intelligence, volume 35, pages 1461214620. A Details and Statistics of Datasets We conducted our experiments on the DocRED (Yao et al., 2019), Re-DocRED (Tan et al., 2022), and DWIE (Zapor
+------------------------------------------------------------------------------------------
+[p11] score=3 kw=DocRED
+#Facts. DWIE train 602 65 16,494 14,403 dev 98 2,785 2,624 test 99 2,623 2,495 DocRED train 3,053 96 59,493 38,180 dev 998 19,578 12,323 test 1,000 19,539 - Re-DocRED train 3,053 96 59,359 85,932 dev 500 9,684 17,284 test 500 9,779 17,448 Table 7: Statistics on datasets, where Doc. (resp. Rel or Ent) abbreviates documents (resp. relations or entities). B Parameter Settings B.1 Fine-tuned Parameters For the entity pair selection, multiple-choi
+------------------------------------------------------------------------------------------
+[p11] score=3 kw=Parameter Settings
+ev 500 9,684 17,284 test 500 9,779 17,448 Table 7: Statistics on datasets, where Doc. (resp. Rel or Ent) abbreviates documents (resp. relations or entities). B Parameter Settings B.1 Fine-tuned Parameters For the entity pair selection, multiple-choice QA, and triple fact judgment stages, the parameters of LLM fine-tuning are shown in the Table 12. B.2 Inference Parameters The parameter settings for LLMs inference at each stage are shown in the Table 8. S
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=top-k
+didate relations involved in the triplet fact judgment stage is shown in Table 17. D Experimental Analysis of Parameters k D.1 Impact of the parameter k on the top-k retrieved candidate relations As illustrated in the Table 9, an increase in the pa- rameter k corresponds to a rise in the number of true relation labels within the retrieved candidate relations. However, this augmentation is accom- panied by a decline in the overall accuracy of
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+e retrieved candidate relations. However, this augmentation is accom- panied by a decline in the overall accuracy of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling 
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+elations. However, this augmentation is accom- panied by a decline in the overall accuracy of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+ augmentation is accom- panied by a decline in the overall accuracy of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+ panied by a decline in the overall accuracy of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection 
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+ the overall accuracy of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection stage is crucial. Incre
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=k=
+of the experimental results. Parameter P R F1 k=80 52.76 54.81 53.77 k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection stage is crucial. Increased sam- pling improv
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=top-k
+ k=40 53.04 54.57 53.79 k=20 53.36 54.19 53.77 k=10 53.73 53.40 53.57 k=5 54.29 52.26 53.26 k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection stage is crucial. Increased sam- pling improves estimation precision by reducing random errors. Larger k values prov
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=sampling
+ k=1 56.51 37.41 45.02 Table 9: The impact of the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection stage is crucial. Increased sam- pling improves estimation precision by reducing random errors. Larger k values provide better data distribution insights and enhance model robustness to outliers. However, highe
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=sampling
+f the parameter k on the top-k retrieved candidate relations on the DocRE. D.2 Analysis of the parameter k on multi-sampling The choice of parameter k on multi-sampling in entity pair selection stage is crucial. Increased sam- pling improves estimation precision by reducing random errors. Larger k values provide better data distribution insights and enhance model robustness to outliers. However, higher sampling iterations also increase computat
+------------------------------------------------------------------------------------------
+[p12] score=3 kw=ablation
+demonstrates that our method is clearly more advantageous in the DocRE task than in DocRTE. F Analysis of Multiple-choice QA and Prior Knowledge we conduct the ablation analysis on the multiple- choice QA and prior knowledge mentioned in Sec- 4033
+------------------------------------------------------------------------------------------
+[p6] score=2 kw=top-k
+ each stage can be found in the Appendix B. The prompt templates for each stage are shown in the Appendix C. In addition, the experimental analysis of the k in top-k candidate relations retrieval and the k-times multi-sampling in entity pair selection are detailed in Appendix D. In order to better test the versatility of our ap- proach, we also conducted experiments on the DocRTE task. The details and results of the ex- periments are shown i
+------------------------------------------------------------------------------------------
+[p6] score=2 kw=retrieval
+n the Appendix B. The prompt templates for each stage are shown in the Appendix C. In addition, the experimental analysis of the k in top-k candidate relations retrieval and the k-times multi-sampling in entity pair selection are detailed in Appendix D. In order to better test the versatility of our ap- proach, we also conducted experiments on the DocRTE task. The details and results of the ex- periments are shown in Appendix E. Baseline Models 
+------------------------------------------------------------------------------------------
+[p6] score=2 kw=sampling
+plates for each stage are shown in the Appendix C. In addition, the experimental analysis of the k in top-k candidate relations retrieval and the k-times multi-sampling in entity pair selection are detailed in Appendix D. In order to better test the versatility of our ap- proach, we also conducted experiments on the DocRTE task. The details and results of the ex- periments are shown in Appendix E. Baseline Models In this study, the primary mod-
+------------------------------------------------------------------------------------------
+[p1] score=1 kw=Retrieval
+l Linguistics: NAACL 2025, pages 40224037 April 29 - May 4, 2025 2025 Association for Computational Linguistics Entity Pair-guided Relation Summarization and Retrieval in LLMs for Document-level Relation Extraction Fu Zhang, Hongsen Yu, Jingwei Cheng, Huangming Xu School of Computer Science and Engineering, Northeastern University, China {zhangfu,chengjingwei}@mail.neu.edu.cn; yuhongsen163@163.com Abstract Document-level relation extraction
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+ further advancing research in this area. Given the wide variety of relation types between entities in DocRE (e.g., there are 96 types of rela- tions in the Re-DocRED (Tan et al., 2022) dataset), the filtering of candidate relations between entities has become one of the key factors influencing the performance of current LLM-based DocRE meth- ods. Current relation extraction paradigms in the sentence-level field generally favor the inclusion 
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+abel) data imbalance problem (NA problem) in DocRE is an- other significant factor leading to suboptimal per- formance of LLM-based models. For example, in the DocRED (Yao et al., 2019) dataset, entity pairs without relation account for 97.17% of the dataset. The excessive amount of NA data poses a risk of false positives in relation prediction (Wan et al., 2023). Gao et al. (2023) addresses this by enhanc- ing prediction capabilities through
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+on relation summa- rizations of entity pairs, thereby enhancing the relevance between candidate relations and entity pairs.  We implemented this method on the DocRED, Re-DocRED and DWIE datasets. Results demonstrate that our approach achieves sig- nificant performance improvements over com- petitive LLM-based baselines (+ 7.42 F1 on DocRED test set, + 4.97 F1 on Re-DocRED dev set and +18.00 F1 on DWIE test set). 2 Related Work 2.1 Traditiona
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+ summa- rizations of entity pairs, thereby enhancing the relevance between candidate relations and entity pairs.  We implemented this method on the DocRED, Re-DocRED and DWIE datasets. Results demonstrate that our approach achieves sig- nificant performance improvements over com- petitive LLM-based baselines (+ 7.42 F1 on DocRED test set, + 4.97 F1 on Re-DocRED dev set and +18.00 F1 on DWIE test set). 2 Related Work 2.1 Traditional DocRE Doc
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+D and DWIE datasets. Results demonstrate that our approach achieves sig- nificant performance improvements over com- petitive LLM-based baselines (+ 7.42 F1 on DocRED test set, + 4.97 F1 on Re-DocRED dev set and +18.00 F1 on DWIE test set). 2 Related Work 2.1 Traditional DocRE Document-level relation extraction is a pivotal task in NLP, wherein over 40.7% of relations are depen- dent on cross-sentence joint reasoning (Yao et al., 2019). Early
+------------------------------------------------------------------------------------------
+[p2] score=1 kw=DocRED
+nstrate that our approach achieves sig- nificant performance improvements over com- petitive LLM-based baselines (+ 7.42 F1 on DocRED test set, + 4.97 F1 on Re-DocRED dev set and +18.00 F1 on DWIE test set). 2 Related Work 2.1 Traditional DocRE Document-level relation extraction is a pivotal task in NLP, wherein over 40.7% of relations are depen- dent on cross-sentence joint reasoning (Yao et al., 2019). Early studies predominantly employ dee
+------------------------------------------------------------------------------------------
+[p3] score=1 kw=retrieval
+rs, candidate relations should be more strongly associated with specific entity pairs. Therefore, we propose an entity pair-guided relation summa- rization and retrieval model EP-RSR based on a novel LLM-based DocRE paradigm EPRF (Entity Pair-Relation-Fact), which focuses on entity-pair- level candidate relations, thereby enhancing the relevance between candidate relations and entity pairs to achieve better triplet fact extraction. 3 Methodology
+------------------------------------------------------------------------------------------
+[p3] score=1 kw=retrieval
+ion summarization for each entity pair, which includes entity information and relation in- formation related to the entity pair. (2)Entity-pair- level relation retrieval module, which retrieves candidate relations that exhibit a higher relevance to the entity pair based on the relation summariza- tion. (3) Triplet fact judgement module, which achieves the goal of triplet fact extraction by judg- ing whether the entity pair has the candidate rela
+------------------------------------------------------------------------------------------
+[p4] score=1 kw=DocRED
+contain relations from a given document. Although, considering that the huge number of en- tity pairs in DocRE poses a significant challenge, for instance, the DocRED datasets dev set includes 26,141 entities, leading to 362,313 entity pairs. Getting enhanced relation summaries for all entity pairs would incur significant computational costs. In addition, the large number of entity pairs causes NA problem, which can lead to false positives i
+------------------------------------------------------------------------------------------
+[p4] score=1 kw=sampling
+causes NA problem, which can lead to false positives in relation prediction (Gao et al., 2023). To address these issues, we propose using LLMs to conduct multi-sampling selection of entity pairs within the document, prior to relation summarization. This approach identifies the entity pairs that potentially contain relations, thereby reducing costs and ef- fectively alleviating NA problem. In detail, we implement the following steps: Multi-sampl
+------------------------------------------------------------------------------------------
+[p4] score=1 kw=sampling
+y pairs that potentially contain relations, thereby reducing costs and ef- fectively alleviating NA problem. In detail, we implement the following steps: Multi-sampling. The multi-sampling process takes as input an instruction I, a document D, and a set of entities V ={ei}ne i=1. It employs LLMs to perform k random sampling, resulting in an entity pair set Pi in one sampling iteration. Pi = LLM (I, D, V). (1) Selecting entity pairs that potenti
+------------------------------------------------------------------------------------------
+[p4] score=1 kw=sampling
+ally contain relations, thereby reducing costs and ef- fectively alleviating NA problem. In detail, we implement the following steps: Multi-sampling. The multi-sampling process takes as input an instruction I, a document D, and a set of entities V ={ei}ne i=1. It employs LLMs to perform k random sampling, resulting in an entity pair set Pi in one sampling iteration. Pi = LLM (I, D, V). (1) Selecting entity pairs that potentially contain relatio
+------------------------------------------------------------------------------------------
+[p4] score=1 kw=sampling
+ti-sampling. The multi-sampling process takes as input an instruction I, a document D, and a set of entities V ={ei}ne i=1. It employs LLMs to perform k random sampling, resulting in an entity pair set Pi in one sampling iteration. Pi = LLM (I, D, V). (1) Selecting entity pairs that potentially contain relations. During each sampling iteration, entity pairs are filtered based on their cosine similarity to the true entities in the dataset. This 
+------------------------------------------------------------------------------------------
+[p5] score=1 kw=sampling
+We finally merge the sets of valid entity pairs obtained from allk sampling iterations to obtain the set of entity pairs potentially containing relations, denoted as Pe: Pe = k i=1 P i . (3) Further, by utilizing the summarization capabili- ties of LLMs, we can deduce the relation summa- rization Rs between an entity pair (eh, et) in Pe. As an example
+------------------------------------------------------------------------------------------
+[p6] score=1 kw=DocRED
+ 2024), achieving SOTA performance in the LLM-based DocRE methods. Specifically, compared to Au- toRE, our model achieves an enhancement of 7.42 in F1 score on DocRED test set and an improve- ment of 18.00 in F1 score on DWIE test set. These significant improvements demonstrate the effective- ness of the proposed method. 4027
+------------------------------------------------------------------------------------------
+[p7] score=1 kw=DocRED
+Model DocRED Re-DocRED Dev Test Dev Test F1 Ign F1 F1 Ign F1 F1 Ign F1 F1 Ign F1 Traditional models CNN (Yao et al., 2019) 43.45 41.58 42.26 40.33 - - - - LSTM (Yao et al., 2019) 50.68 48.44 50.07 47.71 - - - - BiLSTM (Yao et al., 2019) 50.94 48.87 51.06 48.78 - - - - ATLOP (Zhou et al., 202
+------------------------------------------------------------------------------------------
+[p7] score=1 kw=DocRED
+Model DocRED Re-DocRED Dev Test Dev Test F1 Ign F1 F1 Ign F1 F1 Ign F1 F1 Ign F1 Traditional models CNN (Yao et al., 2019) 43.45 41.58 42.26 40.33 - - - - LSTM (Yao et al., 2019) 50.68 48.44 50.07 47.71 - - - - BiLSTM (Yao et al., 2019) 50.94 48.87 51.06 48.78 - - - - ATLOP (Zhou et al., 2021) 61.09 5
+------------------------------------------------------------------------------------------
+[p7] score=1 kw=Llama
+-RSR) 53.77 51.25 54.57 51.77 65.14 63.93 64.24 63.03 Table 1: Experimental results on two public datasets for DocRE. Results with * are our reproduction using Llama3-8B. Bold indicates the best results among the LLM-based methods. Model DWIE Dev Test F1 Ign F1 F1 Ign F1 ChatGPT (Han et al., 2023) - - 26.72 - DocGNRE (Li et al., 2023)* 11.85 10.55 13.12 10.73 AutoRE (Xue et al., 2024)* 56.53 52.74 56.38 49.31 Ours (EP-RSR) 70.23 66.32 74.38 
+------------------------------------------------------------------------------------------
+[p7] score=1 kw=8B
+3.77 51.25 54.57 51.77 65.14 63.93 64.24 63.03 Table 1: Experimental results on two public datasets for DocRE. Results with * are our reproduction using Llama3-8B. Bold indicates the best results among the LLM-based methods. Model DWIE Dev Test F1 Ign F1 F1 Ign F1 ChatGPT (Han et al., 2023) - - 26.72 - DocGNRE (Li et al., 2023)* 11.85 10.55 13.12 10.73 AutoRE (Xue et al., 2024)* 56.53 52.74 56.38 49.31 Ours (EP-RSR) 70.23 66.32 74.38 69.5
+------------------------------------------------------------------------------------------
+[p7] score=1 kw=DocRED
+, compared to non-fine-tuned methods, our model demonstrates a significant performance breakthrough, achieving an improvement of ap- proximately 21.56 in F1 on DocRED dev set over the ChatGPT-based DocRE baseline (Han et al., 2023), thereby exhibiting a greater degree of com- petitiveness. Although the fine-tuned process ne- cessitates additional computational resources and time, the experimental results indicate that these investments are wo
+------------------------------------------------------------------------------------------
+[p9] score=1 kw=DocRED
+mance but also maintains a relatively low time cost. Model Training time Inference time AutoRE 68672s 14877s Our Method 49387s 12063s Table 6: Time cost on the DocRED dataset. 5 Conclusion In this paper, we introduce a novel LLM-based DocRE framework based on our proposed entity- pair-level candidate relations and a new LLM- based DocRE paradigm EPRF. Our model achieves SOTA results in LLM-based methods on DocRED, Re-DocRED and DWIE datasets,
+------------------------------------------------------------------------------------------
+[p10] score=1 kw=classifier
+ Con- ference on Empirical Methods in Natural Language Processing, pages 54955505. Xingzuo Li, Kehai Chen, Yunfei Long, and Min Zhang. 2024. Llm with relation classifier for document-level relation extraction. arXiv preprint arXiv:2408.13889. Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Man- dar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. 2019. Roberta: A robustly optimized bert pretraining ap- proach. arX
+------------------------------------------------------------------------------------------
+[p10] score=1 kw=docred
+f the Association for Computational Lin- guistics, pages 43094316. Qingyu Tan, Lu Xu, Lidong Bing, Hwee Tou Ng, and Sharifah Mahani Aljunied. 2022. Revisiting docred- addressing the false negative problem in relation ex- traction. In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pages 84728487. Hengzhu Tang, Yanan Cao, Zhenyu Zhang, Jiangxia Cao, Fang Fang, Shi Wang, and Pengfei Yin. 2020. Hin: Hier
+------------------------------------------------------------------------------------------
+[p10] score=1 kw=Llama
+ Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothe Lacroix, Baptiste Rozire, Naman Goyal, Eric Hambro, Faisal Azhar, et al. 2023. Llama: Open and effi- cient foundation language models. arXiv preprint arXiv:2302.13971. A Vaswani. 2017. Attention is all you need. Advances in Neural Information Processing Systems. Zhen Wan, Fei Cheng, Zhuoyuan Mao, Qianying Liu, Haiyue Song, Jiwei Li, and Sadao Kurohashi. 2023. Gp
+------------------------------------------------------------------------------------------
+[p10] score=1 kw=Docred
+em Demonstra- tions), pages 211220. Yuan Yao, Deming Ye, Peng Li, Xu Han, Yankai Lin, Zhenghao Liu, Zhiyuan Liu, Lixin Huang, Jie Zhou, and Maosong Sun. 2019. Docred: A large-scale document-level relation extraction dataset. In Pro- ceedings of the 57th Annual Meeting of the Associa- tion for Computational Linguistics, pages 764777. Klim Zaporojets, Johannes Deleu, Chris Develder, and Thomas Demeester. 2021. Dwie: An entity-centric dataset 
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=Llama
+e- lations from biomedical literature. Journal of biomed- ical informatics, 83:19. Yaowei Zheng, Richong Zhang, Junhao Zhang, Yanhan Ye, and Zheyan Luo. 2024. Llamafactory: Unified efficient fine-tuning of 100+ language models. arXiv preprint arXiv:2403.13372. Huixue Zhou, Mingchen Li, Yongkang Xiao, Han Yang, and Rui Zhang. 2023. Llm instruction-example adap- tive prompting (leap) framework for clinical relation extraction. medRxiv, pages 
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+ngs of the AAAI conference on artifi- cial intelligence, volume 35, pages 1461214620. A Details and Statistics of Datasets We conducted our experiments on the DocRED (Yao et al., 2019), Re-DocRED (Tan et al., 2022), and DWIE (Zaporojets et al., 2021) datasets. Statis- tics for three datasets are reported in Table 7. DocRED is a dataset designed for the task of re- lation extraction from multi-paragraph documents, comprising 132,375 entities,
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+artifi- cial intelligence, volume 35, pages 1461214620. A Details and Statistics of Datasets We conducted our experiments on the DocRED (Yao et al., 2019), Re-DocRED (Tan et al., 2022), and DWIE (Zaporojets et al., 2021) datasets. Statis- tics for three datasets are reported in Table 7. DocRED is a dataset designed for the task of re- lation extraction from multi-paragraph documents, comprising 132,375 entities, 1,829,756 entity pairs and 56
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+ DocRED (Yao et al., 2019), Re-DocRED (Tan et al., 2022), and DWIE (Zaporojets et al., 2021) datasets. Statis- tics for three datasets are reported in Table 7. DocRED is a dataset designed for the task of re- lation extraction from multi-paragraph documents, comprising 132,375 entities, 1,829,756 entity pairs and 56,354 relation facts annotated across 5,053 Wikipedia articles. It comprises 3,053 train doc- uments, 998 dev documents, and 1,000
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+ocu- ments, encompassing 96 relation types. In contrast to previous relation extraction tasks that primarily focused on single sentences or short text corpora, DocRED incorporates more complex contextual information and inter-paragraph relations, necessi- tating models to possess enhanced understanding and reasoning capabilities. Re-DocRED dataset serves as an improvement over DocRED, analyzing the causes and impacts of the false negative iss
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+ates more complex contextual information and inter-paragraph relations, necessi- tating models to possess enhanced understanding and reasoning capabilities. Re-DocRED dataset serves as an improvement over DocRED, analyzing the causes and impacts of the false negative issues present in the original dataset, and re-annotating a total of 4,053 docu- ments from DocRED to address these concerns. It comprises 3,053 train documents, 500 dev docu- me
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+inter-paragraph relations, necessi- tating models to possess enhanced understanding and reasoning capabilities. Re-DocRED dataset serves as an improvement over DocRED, analyzing the causes and impacts of the false negative issues present in the original dataset, and re-annotating a total of 4,053 docu- ments from DocRED to address these concerns. It comprises 3,053 train documents, 500 dev docu- ments, and 500 test documents. DWIE consists of
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+over DocRED, analyzing the causes and impacts of the false negative issues present in the original dataset, and re-annotating a total of 4,053 docu- ments from DocRED to address these concerns. It comprises 3,053 train documents, 500 dev docu- ments, and 500 test documents. DWIE consists of 802 general news articles in English, randomly selected from a corpus collected from the German broadcaster Deutsche Welle be- tween 2002 and 2018. It is 
+------------------------------------------------------------------------------------------
+[p11] score=1 kw=DocRED
+ test documents, encompassing 65 relation types. Dataset Split #Doc. #Rel. #Ent. #Facts. DWIE train 602 65 16,494 14,403 dev 98 2,785 2,624 test 99 2,623 2,495 DocRED train 3,053 96 59,493 38,180 dev 998 19,578 12,323 test 1,000 19,539 - Re-DocRED train 3,053 96 59,359 85,932 dev 500 9,684 17,284 test 500 9,779 17,448 Table 7: Statistics on datasets, where Doc. (resp. Rel or Ent) abbreviates documents (resp. relations or entities). B Paramete
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=sampling
+mation precision by reducing random errors. Larger k values provide better data distribution insights and enhance model robustness to outliers. However, higher sampling iterations also increase computational costs. The results, as shown in Figure 4, indicate that increased sampling improves recall but reduces accuracy, emphasizing the need for an optimal choice of k. 1 2 3 4 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision R
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=sampling
+model robustness to outliers. However, higher sampling iterations also increase computational costs. The results, as shown in Figure 4, indicate that increased sampling improves recall but reduces accuracy, emphasizing the need for an optimal choice of k. 1 2 3 4 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(L
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=Sampling
+shown in Figure 4, indicate that increased sampling improves recall but reduces accuracy, emphasizing the need for an optimal choice of k. 1 2 3 4 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=sampling
+need for an optimal choice of k. 1 2 3 4 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability An
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=Mistral
+ 1 2 3 4 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To v
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=7B
+ 5 6 7 8 9 10 Sampling iteration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To vali
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=Llama
+teration number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=8B
+n number k 50 55 60 F1 Score Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our mod
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=Mistral
+ Precision Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our model on the DocRTE, we make a modif
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=7B
+on Recall Figure 4: Analysis of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our model on the DocRTE, we make a modifica
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=Llama
+s of parameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our model on the DocRTE, we make a modification to the structure of our m
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=8B
+rameter k on multi-sampling. Model Dev Test AutoRE(Mistral-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our model on the DocRTE, we make a modification to the structure of our model
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=DocRED
+al-7B)* 53.01 51.91 AutoRE(Llama3-8B)* 57.79 56.74 Our Method(Mistral-7B) 54.90 53.41 Our Method(Llama3-8B) 58.77 56.81 Table 10: Experimental F1 results on Re-DocRED for the DocRTE Task. Results marked with * are our repro- ductions. E Scalability Analysis of EP-RSR on DocRTE To validate the performance of our model on the DocRTE, we make a modification to the structure of our model EP-RSR: (1) The prompt in the entity pair selection phase h
+------------------------------------------------------------------------------------------
+[p12] score=1 kw=DocRED
+ EP-RSR demonstrates strong competi- tiveness and generalization in DocRTE. Compared with AutoRE, our method shows an improvement of 1.89 in F1 score on the Re-DocRED dev set for the DocRTE task. Considering that our model is primarily designed for DocRE, the performance improvement in the DocRE task demonstrates that our method is clearly more advantageous in the DocRE task than in DocRTE. F Analysis of Multiple-choice QA and Prior Knowledge
+------------------------------------------------------------------------------------------
+[p13] score=1 kw=DocRED
+ as- sociated labels. To further assess the impact of relation labels number in the train set on the model, we calculated the F1 score for each relation in the DocRED dev set. The results are shown in Figure 5. As the number of relation labels in the train set de- creases, the overall F1 score for the relation also exhibits a downward trend. There is a clear posi- tive correlation between the frequency of relations in the train set and their 
+------------------------------------------------------------------------------------------
+[p1] score=0 kw=retrieval
+ im- portant reason for the suboptimal performance of LLM-based methods. To address these is- sues, we propose an entity pair-guided relation summarization and retrieval model (EP-RSR) for DocRE, which introduces an innovative LLM-based document-level relation extraction paradigm, EPRF (Entity Pair-Relation-Fact), along with an entity pair-level candidate rela- tion filtering method. Our approach first selects entity pairs that potentially conta
+------------------------------------------------------------------------------------------
+[p1] score=0 kw=retrieval
+idate rela- tion filtering method. Our approach first selects entity pairs that potentially contain relations and uses them to guide relation summarization and retrieval for extracting relation facts. This enhances the relevance between candidate rela- tions and entity pairs while alleviating the issue of imbalanced NA data. Benchmark testing on three datasets demonstrates that our approach achieves state-of-the-art (SOTA) performance for LLM-ba
+------------------------------------------------------------------------------------------
+[p2] score=0 kw=retrieval
+in the absence of high quality sources of weak supervision. To address the aforementioned issues, we pro- pose an entity pair-guided relation summarization and retrieval model EP-RSR based on a novel LLM-based DocRE paradigm EPRF (Entity Pair- Relation-Fact). This paradigm EPRF first selects entity pairs, then filters candidate relations, and finally performs triplet fact extraction. Based on this paradigm, our approach first selects entity pair
+------------------------------------------------------------------------------------------
+[p2] score=0 kw=retrieval
+otentially contain relations from a given docu- ment, thereby alleviating the imbalance issue of NA data. Subsequently, we introduce entity-pair-level relation retrieval, which retrieves candidate rela- tions for an entity pair from our constructed train- ing data based on relation summarization of the entity pair. Finally, utilizing the candidate relations and their descriptions, we judge whether the entity pair has the candidate relations, thu
+------------------------------------------------------------------------------------------
+[p2] score=0 kw=retrieval
+ thus achieving the goal of triplet fact extraction. Our contributions are summarized as follows:  We propose an entity pair-guided relation summarization and retrieval model EP-RSR based on a novel paradigm EPRF for LLM- based document-level relation extraction. Our method effectively alleviates the issue of NA data imbalance and enhances the models ca- pacity to extract triplet facts.  We propose a candidate relation filtering method based 
+------------------------------------------------------------------------------------------
+[p4] score=0 kw=Retrieval
+ted in country Skai Group C. Skai TV is located in the administrative territorial Skai Group D. Skai TV is not related to Skai Group Entity-pair-level Relation Retrieval Relation summarization for an entity pair Skai TV is a Greek free-to-air television network, Skai Group is one of the largest media groups in Greece, Skai TV is a part of the Skai Group. Instruction Based on the text and the description of the relation "owned by", give an answer
+------------------------------------------------------------------------------------------
+[p9] score=0 kw=DocRED
+ based on our proposed entity- pair-level candidate relations and a new LLM- based DocRE paradigm EPRF. Our model achieves SOTA results in LLM-based methods on DocRED, Re-DocRED and DWIE datasets, while also alle- viating the NA problem in DocRE. Although our model is still inferior to the latest traditional small models, our LLM-based results further narrows the performance gap with the latest small models, mak- ing it a promising approach f
+------------------------------------------------------------------------------------------
+[p9] score=0 kw=DocRED
+ur proposed entity- pair-level candidate relations and a new LLM- based DocRE paradigm EPRF. Our model achieves SOTA results in LLM-based methods on DocRED, Re-DocRED and DWIE datasets, while also alle- viating the NA problem in DocRE. Although our model is still inferior to the latest traditional small models, our LLM-based results further narrows the performance gap with the latest small models, mak- ing it a promising approach for future L
+------------------------------------------------------------------------------------------

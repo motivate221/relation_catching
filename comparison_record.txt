@@ -1,0 +1,79 @@
+DocRE Baseline vs Rerank Comparison Record
+
+Purpose
+- Compare the original pipeline and the rerank-enhanced pipeline under the same model, data range, and training-side retrieval cache.
+- Keep both final scores and process indicators so the improvement can be explained, not only reported.
+
+Fixed Experimental Conditions
+- Base model: Qwen2.5-3B-Instruct (local 4bit service)
+- Training-side retrieval cache: train_annotated 0-20
+- Data split: DocRED dev subset
+- Doc range: 0-5
+- Evaluation script: other/evaluate_subset.py
+
+Run Commands
+
+1. Baseline run
+PowerShell:
+.\start_model_service.ps1
+.\run_dev_0_20_pipeline.ps1 -DocStart 0 -DocEnd 5 -UseRerank $false -MethodTag baseline -ResetCheckpoint
+
+Evaluate:
+cd other
+python evaluate_subset.py --data-name dev --doc-start 0 --doc-end 5 --method-tag baseline
+
+2. Rerank run
+PowerShell:
+.\start_model_service.ps1
+.\run_dev_0_20_pipeline.ps1 -DocStart 0 -DocEnd 5 -UseRerank $true -MethodTag rerank -ResetCheckpoint
+
+Evaluate:
+cd other
+python evaluate_subset.py --data-name dev --doc-start 0 --doc-end 5 --method-tag rerank
+
+Output File Mapping
+
+Baseline
+- Stage 5 prompt: data/multiple_choice_prompt/dev/multiple_choice_prompt-path-k20_dev-docred_0-5_baseline.jsonl
+- Stage 5 check result: data/check_result_multiple_choice_jsonl/dev/result_docred_dev_multiple_choice_path-k20-docred_0-5_baseline.jsonl
+- Stage 5 label: data/get_multiple_choice_label/dev/docred_dev_multiple_choice_path-k20-docred_0-5_baseline_answer.jsonl
+- Stage 6 check result: data/check_result_triplet_fact_judgement_jsonl/dev/result_docred_dev_triplet_fact_judgement_k20-docred_0-5_baseline.jsonl
+- Final prediction: data/get_triplet_fact_judgement_label/dev/docred_dev_triplet_fact_judgement_0-5_answer-k20-docred_0-5_baseline.jsonl
+
+Rerank
+- Stage 5 prompt: data/multiple_choice_prompt/dev/multiple_choice_prompt-path-k20_dev-docred_0-5_rerank.jsonl
+- Stage 5 check result: data/check_result_multiple_choice_jsonl/dev/result_docred_dev_multiple_choice_path-k20-docred_0-5_rerank.jsonl
+- Stage 5 label: data/get_multiple_choice_label/dev/docred_dev_multiple_choice_path-k20-docred_0-5_rerank_answer.jsonl
+- Stage 6 check result: data/check_result_triplet_fact_judgement_jsonl/dev/result_docred_dev_triplet_fact_judgement_k20-docred_0-5_rerank.jsonl
+- Final prediction: data/get_triplet_fact_judgement_label/dev/docred_dev_triplet_fact_judgement_0-5_answer-k20-docred_0-5_rerank.jsonl
+
+Metric Table
+
+| Method | Doc Range | Precision | Recall | F1 | TP | FP | FN |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Baseline | 0-5 | 1.000000 | 0.048387 | 0.092308 | 3 | 0 | 59 |
+| Rerank | 0-5 | 1.000000 | 0.048387 | 0.092308 | 3 | 0 | 59 |
+
+Process Indicator Table
+
+| Method | Stage 5 Prompt Count | Stage 5 Label Count | Stage 6 Prompt Count | Stage 6 Final Prediction Count | Notes |
+|---|---:|---:|---:|---:|---|
+| Baseline | 109 | 34 | 74 | 3 | pipeline log: logs/pipeline_dev_0-5_20260406_203645 |
+| Rerank | 100 | 36 | 72 | 3 | pipeline log: logs/pipeline_dev_0-5_20260406_204036 |
+
+Analysis Notes
+
+1. Score comparison
+- Baseline: precision is high but recall is low; the pipeline is conservative and keeps only 3 final triples on dev 0-5.
+- Rerank: final precision / recall / F1 are identical to baseline on dev 0-5, so no score gain is observed on this tiny subset.
+
+2. Candidate compression comparison
+- Baseline: stage 5 prompt count = 109, stage 6 prompt count = 74.
+- Rerank: stage 5 prompt count = 100, stage 6 prompt count = 72, showing that rerank still reduces the downstream candidate space.
+
+3. Output quality observation
+- Baseline: stage 5 output format is stable, but candidate space is still relatively large.
+- Rerank: the final predicted triples differ from baseline, but the number of correct triples stays at 3 on dev 0-5.
+
+4. Final conclusion
+- On dev 0-5, rerank improves candidate compression but does not yet improve F1. A larger subset such as dev 0-50 is needed to judge whether the rerank module brings consistent score gains.

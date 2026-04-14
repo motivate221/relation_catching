@@ -1,0 +1,849 @@
+
+========================================================================================================================
+AutoRE.pdf
+========================================================================================================================
+pages: 10
+hit_count: 62 ; showing_top: 62
+[p1] score=5 kw=Parameter
+more reflective of real- world scenarios. Additionally, we have devel- oped an easily extensible RE framework us- ing a Parameters Efficient Fine Tuning (PEFT) algorithm (QLoRA). Our experiments on the RE-DocRED dataset showcase AutoREs best performance, achieving state-of-the-art results, surpassing TAG by 10.03% and 9.03% respec- tively on the 
+--------------------------------------------------------------------------------
+[p1] score=5 kw=QLoRA
+lly, we have devel- oped an easily extensible RE framework us- ing a Parameters Efficient Fine Tuning (PEFT) algorithm (QLoRA). Our experiments on the RE-DocRED dataset showcase AutoREs best performance, achieving state-of-the-art results, surpassing TAG by 10.03% and 9.03% respec- tively on the dev and test set. The code is avail- able1 and 
+--------------------------------------------------------------------------------
+[p2] score=5 kw=Mistral
+ed simplified relation extraction templates, developing an instruction-tuning dataset based on Re-DocRED. Utilizing the Mistral-7B model with Parameter Efficient Fine-Tuning (PEFT), QLoRA (Dettmers et al., 2023), our model achieved state- of-the-art (SOTA) performance on the Re-DocRED test set. Key contributions of our work include: Various RE P
+--------------------------------------------------------------------------------
+[p2] score=5 kw=7B
+ified relation extraction templates, developing an instruction-tuning dataset based on Re-DocRED. Utilizing the Mistral-7B model with Parameter Efficient Fine-Tuning (PEFT), QLoRA (Dettmers et al., 2023), our model achieved state- of-the-art (SOTA) performance on the Re-DocRED test set. Key contributions of our work include: Various RE Para
+--------------------------------------------------------------------------------
+[p2] score=5 kw=Parameter
+ extraction templates, developing an instruction-tuning dataset based on Re-DocRED. Utilizing the Mistral-7B model with Parameter Efficient Fine-Tuning (PEFT), QLoRA (Dettmers et al., 2023), our model achieved state- of-the-art (SOTA) performance on the Re-DocRED test set. Key contributions of our work include: Various RE Paradigms. We conducted e
+--------------------------------------------------------------------------------
+[p2] score=5 kw=QLoRA
+truction-tuning dataset based on Re-DocRED. Utilizing the Mistral-7B model with Parameter Efficient Fine-Tuning (PEFT), QLoRA (Dettmers et al., 2023), our model achieved state- of-the-art (SOTA) performance on the Re-DocRED test set. Key contributions of our work include: Various RE Paradigms. We conducted exper- iments across a variety of RE 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+ step of extracting relations and instead use the correct relation as prior knowledge. Module TP FP Recall Precision F1 QLoRA-relation-dev 3190 657 63.81 82.92 72.12 QLoRA-head-dev 11269 1910 65.38 85.51 74.10 QLoRA-fact-dev 14439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+the correct relation as prior knowledge. Module TP FP Recall Precision F1 QLoRA-relation-dev 3190 657 63.81 82.92 72.12 QLoRA-head-dev 11269 1910 65.38 85.51 74.10 QLoRA-fact-dev 14439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60 QLoRA-fact-test 14439 2628 82.75 84.60 83.66 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+ule TP FP Recall Precision F1 QLoRA-relation-dev 3190 657 63.81 82.92 72.12 QLoRA-head-dev 11269 1910 65.38 85.51 74.10 QLoRA-fact-dev 14439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60 QLoRA-fact-test 14439 2628 82.75 84.60 83.66 AutoRE-dev 7588 3805 44.02 66.60 53.01 AutoR
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+-dev 3190 657 63.81 82.92 72.12 QLoRA-head-dev 11269 1910 65.38 85.51 74.10 QLoRA-fact-dev 14439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60 QLoRA-fact-test 14439 2628 82.75 84.60 83.66 AutoRE-dev 7588 3805 44.02 66.60 53.01 AutoRE-test 7445 3794 42.67 66.24 51.91 Table 3: 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+11269 1910 65.38 85.51 74.10 QLoRA-fact-dev 14439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60 QLoRA-fact-test 14439 2628 82.75 84.60 83.66 AutoRE-dev 7588 3805 44.02 66.60 53.01 AutoRE-test 7445 3794 42.67 66.24 51.91 Table 3: The results of AutoRE on the Re-DocRED dev and 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+4439 2628 83.77 84.60 84.18 QLoRA-relation-test 3073 686 64.44 81.75 72.06 QLoRA-head-test 12820 2771 73.48 82.23 77.60 QLoRA-fact-test 14439 2628 82.75 84.60 83.66 AutoRE-dev 7588 3805 44.02 66.60 53.01 AutoRE-test 7445 3794 42.67 66.24 51.91 Table 3: The results of AutoRE on the Re-DocRED dev and test sets for the three subtasks of RHF. Camb
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+ompt templates, the extraction of relations, the extraction of the head entity, and finally the triplet extraction. 3.3 QLoRA Tuning Mistral-7B was selected as the foundation for fine-tuning because it demonstrated the best per- formance among the several open-source models tested when evaluating LLMs on the Re-DocRED task. To facilitate effic
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Mistral
+s, the extraction of relations, the extraction of the head entity, and finally the triplet extraction. 3.3 QLoRA Tuning Mistral-7B was selected as the foundation for fine-tuning because it demonstrated the best per- formance among the several open-source models tested when evaluating LLMs on the Re-DocRED task. To facilitate efficient training, 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=7B
+xtraction of relations, the extraction of the head entity, and finally the triplet extraction. 3.3 QLoRA Tuning Mistral-7B was selected as the foundation for fine-tuning because it demonstrated the best per- formance among the several open-source models tested when evaluating LLMs on the Re-DocRED task. To facilitate efficient training, we 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+-source models tested when evaluating LLMs on the Re-DocRED task. To facilitate efficient training, we opted for PEFTs QLoRA. The key advantage of QLoRA is its ability to combine the benefits of quantization and Low-Rank Adaptation (Hu et al., 2021), result- ing in efficient fine-tuning. Specifically, quantiza- tion reduces data complexity, a
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+valuating LLMs on the Re-DocRED task. To facilitate efficient training, we opted for PEFTs QLoRA. The key advantage of QLoRA is its ability to combine the benefits of quantization and Low-Rank Adaptation (Hu et al., 2021), result- ing in efficient fine-tuning. Specifically, quantiza- tion reduces data complexity, allowing for more ef- ficient
+--------------------------------------------------------------------------------
+[p5] score=5 kw=quantization
+ate efficient training, we opted for PEFTs QLoRA. The key advantage of QLoRA is its ability to combine the benefits of quantization and Low-Rank Adaptation (Hu et al., 2021), result- ing in efficient fine-tuning. Specifically, quantiza- tion reduces data complexity, allowing for more ef- ficient storage and processing, which is particularly valuable
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Rank
+g, we opted for PEFTs QLoRA. The key advantage of QLoRA is its ability to combine the benefits of quantization and Low-Rank Adaptation (Hu et al., 2021), result- ing in efficient fine-tuning. Specifically, quantiza- tion reduces data complexity, allowing for more ef- ficient storage and processing, which is particularly valuable for deployin
+--------------------------------------------------------------------------------
+[p5] score=5 kw=7B
+pproach Model dev F1 test F1 TAG 49.34 49.38 AutoRE-ChatGLM3-6B 49.86 51.11 AutoRE-Mistral-7B 53.01 51.91 AutoRE-Vicuna-7B 54.29 53.84 Table 4: The results of AutoRE for different PLMs. Compared with TAG, all AutoRE models achieve the best performance. could have compromised performance. However, the modular structure of QLoRA facilitated s
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+cture of QLoRA facilitated smooth integration with the underlying base model. As a result, we instituted three distinct QLoRA modules, each meticulously fine-tuned to its specific dataset. This meticulous approach resulted in the creation of the AutoRE, which amalgamates these modules for amplified DocRE performance. 4 Experiment 4.1 Experimen
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+lly valid evaluation, lending robust credibility to the final results. 4.2 Overall Result After training three distinct QLoRA modules, we test the performance on the Re-DocRED and then combine three QLoRAs to get the final perfor- mance on the dev set and test set, the result is shown in Table 3. When compared with TAG (Zhang et al., 2023) as 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=QLoRA
+all Result After training three distinct QLoRA modules, we test the performance on the Re-DocRED and then combine three QLoRAs to get the final perfor- mance on the dev set and test set, the result is shown in Table 3. When compared with TAG (Zhang et al., 2023) as a baseline which firstly reported the 215
+--------------------------------------------------------------------------------
+[p6] score=5 kw=Mistral
+ AutoRE can serve as a reference for subsequent research in this field. 4.3 Ablation In the ablation study, we employed Mistral-7B to fine-tune the paradigms mentioned before, reveal- ing that the RHF model yields the best performance when solely utilizing one QLoRA module. This finding substantiates our initial hypothesis during paradigm select
+--------------------------------------------------------------------------------
+[p6] score=5 kw=7B
+can serve as a reference for subsequent research in this field. 4.3 Ablation In the ablation study, we employed Mistral-7B to fine-tune the paradigms mentioned before, reveal- ing that the RHF model yields the best performance when solely utilizing one QLoRA module. This finding substantiates our initial hypothesis during paradigm selection
+--------------------------------------------------------------------------------
+[p7] score=5 kw=QLoRA
+ts the model, as shown in Figure 4. Additionally, we explored the effectiveness of training the entire dataset with one QLoRA versus independently training differ- ent stages of RHF with three distinct QLoRAs. The latter approach demonstrated superior performance. We believe this is due to the data imbalance among predicting relations, predict
+--------------------------------------------------------------------------------
+[p7] score=5 kw=Qlora
+t impressing gpt-4 with 90%* chatgpt quality. Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, and Luke Zettlemoyer. 2023. Qlora: Efficient finetuning of quantized llms. ArXiv, abs/2305.14314. Zhengxiao Du, Yujie Qian, Xiao Liu, Ming Ding, Jiezhong Qiu, Zhilin Yang, and Jie Tang. 2022. Glm: General language model pretraining with autoregres- sive
+--------------------------------------------------------------------------------
+[p2] score=4 kw=Mistral
+ meticulously crafted an instruction- finetuning dataset based on Re-DocRED. This dataset was utilized to fine-tune the Mistral-7B with QLoRA, culminating in the creation of Au- toRE, which achieved SOTA results across multiple pre-trained LLMs (PLMs), demonstrating the gen- erality and effectiveness of this model architecture. Easy Enhancement 
+--------------------------------------------------------------------------------
+[p2] score=4 kw=7B
+ously crafted an instruction- finetuning dataset based on Re-DocRED. This dataset was utilized to fine-tune the Mistral-7B with QLoRA, culminating in the creation of Au- toRE, which achieved SOTA results across multiple pre-trained LLMs (PLMs), demonstrating the gen- erality and effectiveness of this model architecture. Easy Enhancement of 
+--------------------------------------------------------------------------------
+[p2] score=4 kw=QLoRA
+afted an instruction- finetuning dataset based on Re-DocRED. This dataset was utilized to fine-tune the Mistral-7B with QLoRA, culminating in the creation of Au- toRE, which achieved SOTA results across multiple pre-trained LLMs (PLMs), demonstrating the gen- erality and effectiveness of this model architecture. Easy Enhancement of Capabilitie
+--------------------------------------------------------------------------------
+[p2] score=4 kw=QLoRA
+ity and effectiveness of this model architecture. Easy Enhancement of Capabilities. We have incorporates three distinct QLoRA modules within the RHF framework, where each module is exclu- sively responsible for a specific task: one for re- lation extraction, another for head entity identifi- cation, and the third for triple fact extraction, en
+--------------------------------------------------------------------------------
+[p5] score=4 kw=QLoRA
+which is particularly valuable for deploying large models on resource- constrained devices. We leveraged three distinct QLoRA modules, each tailored to a specific stage of the RHF steps. This implementation was critical in enhancing RE efficiency. With the data volume varying across the intertwined tasks, a one-size-fits-all approach Model dev
+--------------------------------------------------------------------------------
+[p5] score=4 kw=QLoRA
+, all AutoRE models achieve the best performance. could have compromised performance. However, the modular structure of QLoRA facilitated smooth integration with the underlying base model. As a result, we instituted three distinct QLoRA modules, each meticulously fine-tuned to its specific dataset. This meticulous approach resulted in the crea
+--------------------------------------------------------------------------------
+[p6] score=4 kw=QLoRA
+ne the paradigms mentioned before, reveal- ing that the RHF model yields the best performance when solely utilizing one QLoRA module. This finding substantiates our initial hypothesis during paradigm selection: employing a step-by-step ap- proach enhances the extraction of triplet facts while significantly reducing erroneous triplets through f
+--------------------------------------------------------------------------------
+[p7] score=4 kw=QLoRA
+ training the entire dataset with one QLoRA versus independently training differ- ent stages of RHF with three distinct QLoRAs. The latter approach demonstrated superior performance. We believe this is due to the data imbalance among predicting relations, predicting head entities, and predicting factual triples in the RHF paradigm, with the da
+--------------------------------------------------------------------------------
+[p7] score=4 kw=QLoRA
+oRE, an advanced DocRE model. AutoRE represents a cutting-edge approach to the DocRE task, utilizing LLMs combined with QLoRA. This innovative model establishes a new standard, achieving SOTA results on the Re- DocRED dataset. AutoRE proficiently addresses the intricate task of extracting multiple relations from document-level texts, a signifi
+--------------------------------------------------------------------------------
+[p5] score=3 kw=Experimental Setup
+sulted in the creation of the AutoRE, which amalgamates these modules for amplified DocRE performance. 4 Experiment 4.1 Experimental Setup Test set. In our evaluation, we utilized the refined Re-DocRED test set consisting of 499 articles and 17,448 triplet facts, and a validation set encompass- ing 498 articles with 17,236 triplets, ensuring a comprehensiv
+--------------------------------------------------------------------------------
+[p6] score=3 kw=Mistral
+ results, as shown in Table 4. In both the dev set and test set, the performance im- provement of AutoRE finetuned with Mistral-7B over TAG is approximately 7.44% on the dev set, and about 5.12% on the test set demonstrating the effectiveness of our approach. Furthermore, by de- composing the task into three subtasks and training with three LoRA
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+, as shown in Table 4. In both the dev set and test set, the performance im- provement of AutoRE finetuned with Mistral-7B over TAG is approximately 7.44% on the dev set, and about 5.12% on the test set demonstrating the effectiveness of our approach. Furthermore, by de- composing the task into three subtasks and training with three LoRA mo
+--------------------------------------------------------------------------------
+[p8] score=3 kw=Lora
+2305.14450. J. Edward Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, and Weizhu Chen. 2021. Lora: Low-rank adaptation of large language models. ArXiv, abs/2106.09685. Albert Qiaochu Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra Singh Chap- lot, Diego de Las Casas, Florian Bressand, Gi- anna 
+--------------------------------------------------------------------------------
+[p8] score=3 kw=rank
+. J. Edward Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, and Weizhu Chen. 2021. Lora: Low-rank adaptation of large language models. ArXiv, abs/2106.09685. Albert Qiaochu Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra Singh Chap- lot, Diego de Las Casas, Florian Bressand, Gi- anna Lengyel, G
+--------------------------------------------------------------------------------
+[p6] score=2 kw=LoRA
+g the effectiveness of our approach. Furthermore, by de- composing the task into three subtasks and training with three LoRA modules, we not only achieved ex- cellent results but also naturally acquired an easily extendable trait. This allows for targeted improve- ment of a specific modules performance without impacting the performance of ot
+--------------------------------------------------------------------------------
+[p1] score=1 kw=Llama
+ble1 and the demonstration video is provided2. 1 Introduction The rise of LLMs, such as GPT-4 (Achiam et al., 2023) and Llama2 (Touvron et al., 2023), has sig- nificantly propelled the progress of natural lan- guage processing due to their strong capabilities 1https://github.com/THUDM/AutoRE 2https://www.youtube.com/watch?v=IhKRsZUAxKk LX and
+--------------------------------------------------------------------------------
+[p1] score=1 kw=Mistral
+ttps://www.youtube.com/watch?v=IhKRsZUAxKk LX and DZ contributed equally. JT is the corresponding author. ChatGPT TAG Mistral-A Vicuna-A GLM-A 0 10 20 30 40 50 60F1 6.68 6.59 4.29 4.25 49.38 51.91 53.84 51.11 Not-Finetuned Finetuned Figure 1: The result on the test set of Re-DocRED. AutoRE (-A) achieves SOTA for different LLMs. in text underst
+--------------------------------------------------------------------------------
+[p1] score=1 kw=Mistral
+ask, specif- ically using the test set of Re-DocRED (Tan et al., 2022). These models included GPT-3.5- turbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of thes
+--------------------------------------------------------------------------------
+[p1] score=1 kw=7B
+cif- ically using the test set of Re-DocRED (Tan et al., 2022). These models included GPT-3.5- turbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of these l
+--------------------------------------------------------------------------------
+[p1] score=1 kw=Mistral
+cRED (Tan et al., 2022). These models included GPT-3.5- turbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of these language 3https://chat.openai.com/chat 211
+--------------------------------------------------------------------------------
+[p1] score=1 kw=7B
+n et al., 2022). These models included GPT-3.5- turbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of these language 3https://chat.openai.com/chat 211
+--------------------------------------------------------------------------------
+[p1] score=1 kw=7B
+22). These models included GPT-3.5- turbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of these language 3https://chat.openai.com/chat 211
+--------------------------------------------------------------------------------
+[p1] score=1 kw=7B
+rbo3(ChatGPT), Mistral-7B-Instruct-v0.2 (Jiang et al., 2023) (Mistral-7B), Vicuna-7B-v1.5 (Chiang et al., 2023) (Vicuna-7B), and ChatGLM3-6B (Du et al., 2022). Our results indicate that, without spe- cific fine-tuning, the performance of these language 3https://chat.openai.com/chat 211
+--------------------------------------------------------------------------------
+[p2] score=1 kw=Mistral
+BERT-based models. Moreover, most models are tested on SentRE. To test LLMs for DocRE, we conducted tests on Chat- GPT, Mistral-7B, Vicuna-7B, and ChatGLM3-6B and revealed that the current performance is far from satisfactory, as illustrated in Figure 1. This aligns with findings reported by (Li et al., 2023b), 212
+--------------------------------------------------------------------------------
+[p2] score=1 kw=7B
+ed models. Moreover, most models are tested on SentRE. To test LLMs for DocRE, we conducted tests on Chat- GPT, Mistral-7B, Vicuna-7B, and ChatGLM3-6B and revealed that the current performance is far from satisfactory, as illustrated in Figure 1. This aligns with findings reported by (Li et al., 2023b), 212
+--------------------------------------------------------------------------------
+[p2] score=1 kw=7B
+Moreover, most models are tested on SentRE. To test LLMs for DocRE, we conducted tests on Chat- GPT, Mistral-7B, Vicuna-7B, and ChatGLM3-6B and revealed that the current performance is far from satisfactory, as illustrated in Figure 1. This aligns with findings reported by (Li et al., 2023b), 212
+--------------------------------------------------------------------------------
+[p5] score=1 kw=sample
+ally, in line with the RHF paradigm, we crafted instruction fine-tuning templates, breaking down the RE process of each sample into three dis- tinct steps. The specific details of these templates can be found in Table 7, we provide a display of how we constructed our training data using simple prompt templates, the extraction of relations, the 
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Mistral
+ertwined tasks, a one-size-fits-all approach Model dev F1 test F1 TAG 49.34 49.38 AutoRE-ChatGLM3-6B 49.86 51.11 AutoRE-Mistral-7B 53.01 51.91 AutoRE-Vicuna-7B 54.29 53.84 Table 4: The results of AutoRE for different PLMs. Compared with TAG, all AutoRE models achieve the best performance. could have compromised performance. However, the modular 
+--------------------------------------------------------------------------------
+[p5] score=1 kw=7B
+ tasks, a one-size-fits-all approach Model dev F1 test F1 TAG 49.34 49.38 AutoRE-ChatGLM3-6B 49.86 51.11 AutoRE-Mistral-7B 53.01 51.91 AutoRE-Vicuna-7B 54.29 53.84 Table 4: The results of AutoRE for different PLMs. Compared with TAG, all AutoRE models achieve the best performance. could have compromised performance. However, the modular str
+--------------------------------------------------------------------------------
+[p7] score=1 kw=7B
+ its capability to predict relations is relatively insufficient. Additionally, we have applied this framework to Vicuna-7B and ChatGLM3-6B, and both models surpassed the current SOTA levels, demonstrating the universality of the AutoRE framework. The comparative results of these experiments are illus- trated in the accompanying Figure 4. Vi
+--------------------------------------------------------------------------------
+[p7] score=1 kw=7B
+e AutoRE framework. The comparative results of these experiments are illus- trated in the accompanying Figure 4. Vicuna-7B scored the highest, surpassing TAG by 10.03% and 9.03% respectively on the dev and test set, whereas ChatGLM3-6B was somewhat lower. This might be due to ChatGLM3-6B having a higher propor- tion of Chinese in its pre-tr
+--------------------------------------------------------------------------------
+[p8] score=1 kw=7b
+haux, Pierre Stock, Teven Le Scao, Thibaut Lavril, Thomas Wang, Timothe Lacroix, and William El Sayed. 2023. Mis- tral 7b. ArXiv, abs/2310.06825. Ming Jiang, Jennifer DSouza, Sren Auer, and J Stephen Downie. 2020. Targeting precision: A hybrid scientific relation extraction pipeline for im- proved scholarly knowledge organization. Procee
+--------------------------------------------------------------------------------
+[p8] score=1 kw=Llama
+bert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et al. 2023. Llama 2: Open founda- tion and fine-tuned chat models. arXiv preprint arXiv:2307.09288. Somin Wadhwa, Silvio Amir, and Byron C. Wallace. 2023. Revisiting relation extraction in the era of large language models. Proceedings of
+--------------------------------------------------------------------------------
+[p2] score=0 kw=settings
+ot adequately comprehend the subject-object relation- ships in RE tasks. Similarly, Li et al. noted that in Standard-IE settings, ChatGPTs performance is generally not as effective as BERT-based models. Moreover, most models are tested on SentRE. To test LLMs for DocRE, we conducted tests on Chat- GPT, Mistral-7B, Vicuna-7B, and ChatGLM3-6B and 
+--------------------------------------------------------------------------------
+[p3] score=0 kw=sample
+ these paradigms encounter significant challenges when applied to DocRE, particularly due to the complexity of handling samples that may contain multiple relations and a multitude of triplet facts. In summary, current LLMs still exhibit signif- icant gaps in performance for DocRE, indicating a need for further fine-tuning. Additionally, the exi
+--------------------------------------------------------------------------------
+likely_config_pages: p5(score=99), p2(score=39), p6(score=22), p7(score=20), p1(score=18), p8(score=8), p3(score=0)
+
+========================================================================================================================
+LLM_with_Relation_Classifier_for_Document-Level_Relation_Extraction.pdf
+========================================================================================================================
+pages: 12
+hit_count: 183 ; showing_top: 120
+[p5] score=9 kw=Parameter
+t set to tune the optimal parameters for the RCP stage based on the F1 score. The value we finally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tu
+--------------------------------------------------------------------------------
+[p5] score=9 kw=batch size
+ed on the F1 score. The value we finally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC sta
+--------------------------------------------------------------------------------
+[p5] score=9 kw=Epoch
+he value we finally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune
+--------------------------------------------------------------------------------
+[p5] score=9 kw=learning rate
+nally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the sa
+--------------------------------------------------------------------------------
+[p5] score=9 kw=warmup
+ers Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, whic
+--------------------------------------------------------------------------------
+[p5] score=9 kw=lora
+cRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV
+--------------------------------------------------------------------------------
+[p5] score=9 kw=lora
+DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. 
+--------------------------------------------------------------------------------
+[p5] score=9 kw=alpha
+D batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. Detail
+--------------------------------------------------------------------------------
+[p5] score=7 kw=parameter
+earning rate at the first 6% steps. Main parameters are provided in Table V. We use development set to tune the optimal parameters for the RCP stage based on the F1 score. The value we finally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRED batch size 4 4 4 4 # Epoch 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup s
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Parameter
+ thus proposed Re-DocRED, a more reliable benchmark for DocRE that revises DocRED to mitigate the false negative issue. Parameters DocRED Re-DocRED batch size 4 4 # Epoch 20, 30, 40 30, 40 lr for encoder {5, 3, 1}e-5 {3, 1}e-5 lr for classifier 1e-4 1e-4 max gradient norm 1.0 1.0 TABLE V: Settings for the RCP stage. Configuration In the RCP stage,
+--------------------------------------------------------------------------------
+[p5] score=5 kw=batch size
+more reliable benchmark for DocRE that revises DocRED to mitigate the false negative issue. Parameters DocRED Re-DocRED batch size 4 4 # Epoch 20, 30, 40 30, 40 lr for encoder {5, 3, 1}e-5 {3, 1}e-5 lr for classifier 1e-4 1e-4 max gradient norm 1.0 1.0 TABLE V: Settings for the RCP stage. Configuration In the RCP stage, RoBERTa large [37] is chosen
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Epoch
+chmark for DocRE that revises DocRED to mitigate the false negative issue. Parameters DocRED Re-DocRED batch size 4 4 # Epoch 20, 30, 40 30, 40 lr for encoder {5, 3, 1}e-5 {3, 1}e-5 lr for classifier 1e-4 1e-4 max gradient norm 1.0 1.0 TABLE V: Settings for the RCP stage. Configuration In the RCP stage, RoBERTa large [37] is chosen as the foun
+--------------------------------------------------------------------------------
+[p5] score=5 kw=classifier
+ssue. Parameters DocRED Re-DocRED batch size 4 4 # Epoch 20, 30, 40 30, 40 lr for encoder {5, 3, 1}e-5 {3, 1}e-5 lr for classifier 1e-4 1e-4 max gradient norm 1.0 1.0 TABLE V: Settings for the RCP stage. Configuration In the RCP stage, RoBERTa large [37] is chosen as the foundational PLM encoder. We implement early stopping based on the F1 score ob
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Adam
+foundational PLM encoder. We implement early stopping based on the F1 score obtained from the development set. We adopt AdamW [38] as the optimizer and apply a linear warm-up for the learning rate at the first 6% steps. Main parameters are provided in Table V. We use development set to tune the optimal parameters for the RCP stage based on th
+--------------------------------------------------------------------------------
+[p5] score=5 kw=optimizer
+ncoder. We implement early stopping based on the F1 score obtained from the development set. We adopt AdamW [38] as the optimizer and apply a linear warm-up for the learning rate at the first 6% steps. Main parameters are provided in Table V. We use development set to tune the optimal parameters for the RCP stage based on the F1 score. The value w
+--------------------------------------------------------------------------------
+[p5] score=5 kw=learning rate
+the F1 score obtained from the development set. We adopt AdamW [38] as the optimizer and apply a linear warm-up for the learning rate at the first 6% steps. Main parameters are provided in Table V. We use development set to tune the optimal parameters for the RCP stage based on the F1 score. The value we finally adopted are in bold. Parameters Pre RC 
+--------------------------------------------------------------------------------
+[p5] score=5 kw=parameter
+ set. We adopt AdamW [38] as the optimizer and apply a linear warm-up for the learning rate at the first 6% steps. Main parameters are provided in Table V. We use development set to tune the optimal parameters for the RCP stage based on the F1 score. The value we finally adopted are in bold. Parameters Pre RC stage DocRED Re-DocRED DocRED Re-DocRE
+--------------------------------------------------------------------------------
+[p5] score=5 kw=Settings
+ 2 2 8 8 learning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. Details regarding parameters are prov
+--------------------------------------------------------------------------------
+[p9] score=5 kw=threshold
+of our methods on the DocRED development set. Results are provided in Figure 6. Fig. 6: Impact of the cosine similarity threshold  on the F1 score. The threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-
+--------------------------------------------------------------------------------
+[p9] score=5 kw=threshold
+lopment set. Results are provided in Figure 6. Fig. 6: Impact of the cosine similarity threshold  on the F1 score. The threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRE
+--------------------------------------------------------------------------------
+[p9] score=5 kw=LLaMA
+ity threshold  on the F1 score. The threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. Ho
+--------------------------------------------------------------------------------
+[p9] score=5 kw=13B
+eshold  on the F1 score. The threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However
+--------------------------------------------------------------------------------
+[p9] score=5 kw=LLaMA
+he threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However, despite incorporating seman
+--------------------------------------------------------------------------------
+[p9] score=5 kw=13B
+shold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However, despite incorporating semantic a
+--------------------------------------------------------------------------------
+[p9] score=5 kw=LLaMA
+t: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However, despite incorporating semantic alignment, the out-of-domain relations generated by LLaMA2- 13B-
+--------------------------------------------------------------------------------
+[p12] score=5 kw=LoRA
+ Jul. 2022, pp. 26552671. [33] E. J. Hu, yelong shen, P. Wallis, Z. Allen-Zhu, Y . Li, S. Wang, L. Wang, and W. Chen, LoRA: Low-rank adaptation of large language models, in International Conference on Learning Representations , 2022. [34] W. Zhou, K. Huang, T. Ma, and J. Huang, Document-level relation extraction with adaptive thresholding
+--------------------------------------------------------------------------------
+[p12] score=5 kw=rank
+, pp. 26552671. [33] E. J. Hu, yelong shen, P. Wallis, Z. Allen-Zhu, Y . Li, S. Wang, L. Wang, and W. Chen, LoRA: Low-rank adaptation of large language models, in International Conference on Learning Representations , 2022. [34] W. Zhou, K. Huang, T. Ma, and J. Huang, Document-level relation extraction with adaptive thresholding and local
+--------------------------------------------------------------------------------
+[p9] score=4 kw=LoRA
+ cosine similarity threshold  on the F1 score. The threshold is applied to discard low-similarity matched pairs. Left: LoRA-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proxima
+--------------------------------------------------------------------------------
+[p3] score=3 kw=LoRA
+tity pairs per input. We integrate all entity pairs into the input prompts adhering to the prescribed method to conduct LoRA [33] fine-tuning and evaluation. In addition, entities of the triplets returned by models are aligned to the annotations in the dataset using thefuzz, and the relations generated not in the predefined relation set are c
+--------------------------------------------------------------------------------
+[p4] score=3 kw=threshold
+ with P (NA|es, eo) > 0.5 are filtered out to maintain efficiency in the subsequent relation classification stage. This threshold of 0.5 was empirically selected to strike a balance between preci- sion and recall: a higher threshold would admit more irrelevant pairs, degrading performance and increasing computational cost, while a lower threshold 
+--------------------------------------------------------------------------------
+[p4] score=3 kw=threshold
+tion stage. This threshold of 0.5 was empirically selected to strike a balance between preci- sion and recall: a higher threshold would admit more irrelevant pairs, degrading performance and increasing computational cost, while a lower threshold could prematurely exclude valid candidates, harming recall. We choose Binary Cross Entropy as our loss 
+--------------------------------------------------------------------------------
+[p4] score=3 kw=threshold
+her threshold would admit more irrelevant pairs, degrading performance and increasing computational cost, while a lower threshold could prematurely exclude valid candidates, harming recall. We choose Binary Cross Entropy as our loss function: L =  X [I(NA)logP + (1  I(NA))log(1  P )], (7) Below is an instruction that describes a task, paired wi
+--------------------------------------------------------------------------------
+[p4] score=3 kw=Binary
+asing computational cost, while a lower threshold could prematurely exclude valid candidates, harming recall. We choose Binary Cross Entropy as our loss function: L =  X [I(NA)logP + (1  I(NA))log(1  P )], (7) Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriatel
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LoRA
+ning rate 1e-4 1e-4 1e-4 1e-4 warmup steps 200 200 100 100 lora r 8 8 8 8 lora alpha 16 16 16 16 TABLE VI: Settings for LoRA fine-tuning. (Pre stands for preliminary experiment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. Details regarding parameters are provided in T
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LoRA
+ment) In the RC stage, we fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. Details regarding parameters are provided in Table VI. We train and evaluate the pre-classifier on a single NVIDIA A100 GPU during the RCP stage, and fine-tune LLMs on 2 NVIDIA A100 GPUs during the RC stage. Evaluation
+--------------------------------------------------------------------------------
+[p5] score=3 kw=parameter
+e fine-tune all LLMs using the same RC-specific prompt, which is detailed in Section IV-B, with LoRA. Details regarding parameters are provided in Table VI. We train and evaluate the pre-classifier on a single NVIDIA A100 GPU during the RCP stage, and fine-tune LLMs on 2 NVIDIA A100 GPUs during the RC stage. Evaluation Consistent with other SOTA m
+--------------------------------------------------------------------------------
+[p5] score=3 kw=classifier
+tailed in Section IV-B, with LoRA. Details regarding parameters are provided in Table VI. We train and evaluate the pre-classifier on a single NVIDIA A100 GPU during the RCP stage, and fine-tune LLMs on 2 NVIDIA A100 GPUs during the RC stage. Evaluation Consistent with other SOTA methods, we apply the standard evaluation metrics: F1 and Ign F1. Ign
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LoRA
+PT-4 [45] - - - 15.58 MDP GPT-4 [45] - - - 21.33 FT Flan-UL2 [46] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LLaMA
+] - - - 15.58 MDP GPT-4 [45] - - - 21.33 FT Flan-UL2 [46] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.
+--------------------------------------------------------------------------------
+[p5] score=3 kw=7B
+ 15.58 MDP GPT-4 [45] - - - 21.33 FT Flan-UL2 [46] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 6
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LoRA
+FT Flan-UL2 [46] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LLaMA
+UL2 [46] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.
+--------------------------------------------------------------------------------
+[p5] score=3 kw=13B
+] - - - 54.50 REPLM GPT3.5 [25] - 59.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LoRA
+9.66 - - Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61
+--------------------------------------------------------------------------------
+[p5] score=3 kw=Qwen
+ Our Methods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.7
+--------------------------------------------------------------------------------
+[p5] score=3 kw=7B
+hods LoRA FT LLaMA2-7B-Chat  33.95 34.32 33.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.8
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LLaMA
+3.99 34.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 
+--------------------------------------------------------------------------------
+[p5] score=3 kw=7B
+.34 LoRA FT LLaMA2-13B-Chat  38.62 39.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.6
+--------------------------------------------------------------------------------
+[p5] score=3 kw=LLaMA
+9.25 38.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the d
+--------------------------------------------------------------------------------
+[p5] score=3 kw=13B
+.09 38.66 LoRA FT Qwen2.5-7B-Instruct  57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the develo
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+ JEREX [47] 71.45 72.57 DREEAM [5] 79.66 80.73 LLM-based 0-shot GPT-4 [45] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+EAM [5] 79.66 80.73 LLM-based 0-shot GPT-4 [45] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC 
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+79.66 80.73 LLM-based 0-shot GPT-4 [45] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+0.73 LLM-based 0-shot GPT-4 [45] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Ins
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+GPT-4 [45] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC L
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+5] - 14.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8
+--------------------------------------------------------------------------------
+[p6] score=3 kw=13B
+.21 MDP GPT-4 [45] - 20.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Ins
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+.16 AutoRE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE 
+--------------------------------------------------------------------------------
+[p6] score=3 kw=Qwen
+RE-Vicuna-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Ev
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+a-7B [6] - 53.84 Our Methods LoRA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluati
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+RA FT LLaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-D
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+LaMA2-7B-Chat  52.74 53.02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRE
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+02 LoRA FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior metho
+--------------------------------------------------------------------------------
+[p6] score=3 kw=13B
+ FT LLaMA2-13B-Chat  52.15 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods ar
+--------------------------------------------------------------------------------
+[p6] score=3 kw=Qwen
+5 52.45 LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from correspondi
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+LoRA FT Qwen2.5-7B-Instruct  73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from corresponding pap
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+ Inter-F1 BERT-RE base 61.61 47.15 RoBERTa-RE base 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+1 BERT-RE base 61.61 47.15 RoBERTa-RE base 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instr
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+RE base 61.61 47.15 RoBERTa-RE base 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+ RoBERTa-RE base 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+-RE base 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-In
+--------------------------------------------------------------------------------
+[p6] score=3 kw=13B
+se 65.65 50.09 LSR-BERT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruc
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LoRA
+RT base 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX
+--------------------------------------------------------------------------------
+[p6] score=3 kw=Qwen
+ 65.26 52.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra-
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+2.05 GAIN-BERT base 67.10 53.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and I
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+.90 LoRA FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set 
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+A FT LLaMA2-7B-Chat 40.85 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of D
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LLaMA
+ 26.08 LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results fro
+--------------------------------------------------------------------------------
+[p6] score=3 kw=13B
+LoRA FT LLaMA2-13B-Chat 45.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18
+--------------------------------------------------------------------------------
+[p6] score=3 kw=Qwen
+.43 31.67 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results fr
+--------------------------------------------------------------------------------
+[p6] score=3 kw=7B
+7 LoRA FT Qwen2.5-7B-Instruct 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results from [17
+--------------------------------------------------------------------------------
+[p9] score=3 kw=13B
+-finetuned LLaMA2-13B-Chat. Right: LMRC with LLaMA2-13B-Chat. Both evaluated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However, despite incorporating semantic alignment, the out-of-domain relations generated by LLaMA2- 13B-Chat 
+--------------------------------------------------------------------------------
+[p9] score=3 kw=threshold
+luated on the DocRED dev set. As is shown, LLaMA2-13B-Chat directly fine-tuned on DocRED attains its peak F1 score when threshold  is set ap- proximately at 0.55. However, despite incorporating semantic alignment, the out-of-domain relations generated by LLaMA2- 13B-Chat fine-tuned within the LMRC framework remain incorrect. We analyze these rela
+--------------------------------------------------------------------------------
+[p9] score=3 kw=threshold
+umber of out-of-domain relations, 74 and 72, respectively. This limited occurrence helps explain why adjustments to the threshold  has little impact on the F1 score. H. Efficiency Analysis To further investigate the computational efficiency and prac- tical applicability of our method, we compare its inference time with the widely-used BERT-based 
+--------------------------------------------------------------------------------
+[p12] score=3 kw=threshold
+ Representations , 2022. [34] W. Zhou, K. Huang, T. Ma, and J. Huang, Document-level relation extraction with adaptive thresholding and localized context pooling, Proceedings of the AAAI Conference on Artificial Intelligence , vol. 35, no. 16, pp. 14 61214 620, May 2021. [35] P. Shi and J. Lin, Simple bert models for relation extraction and se
+--------------------------------------------------------------------------------
+[p9] score=2 kw=threshold
+the hallucination issue of LLMs, and blindly aligning them to R is not appropriate. Therefore, we introduce a heuristic threshold . Only when si max  , does the alignment processed; otherwise, the triplets containing ri are discarded. After alignment, we recalculate the F1 score of our methods on the DocRED development set. Results are provided
+--------------------------------------------------------------------------------
+[p9] score=2 kw=batch size
+s computational com- plexity and memory requirements. The substantial memory footprint also limits the maximum feasible batch size during inference, further contributing to higher latency. However, it is noteworthy that our LMRC framework achieves a significant reduction in inference time compared to the direct fine-tuning baseline. Specifically, L
+--------------------------------------------------------------------------------
+[p1] score=1 kw=Classifier
+IEEE TRANSACTIONS ON BIG DATA 1 LLM with Relation Classifier for Document-Level Relation Extraction Xingzuo Li 1, Kehai Chen 1, Yunfei Long 2, Min Zhang 1 1School of Computer Science and Technology, Harbin Institute of Technology, Shenzhen, China 2School of Electronic Engineering
+--------------------------------------------------------------------------------
+[p2] score=1 kw=few-shot
+-3 for relation extraction on datasets such as TACRED [23]. Wadhwa et al. [24] extended this line of work by leveraging few-shot in-context learning for sentence-level relation extraction. They also evaluated Flan-T5 to prove the potential of fine-tuning smaller scale models for accomplishing this challenging task. Previously, the application of 
+--------------------------------------------------------------------------------
+[p2] score=1 kw=few-shot
+of LLMs to document-level rela- tion extraction has been limited. Ozyurt et al. [25] introduced a method for in-context few-shot relation extraction leveraging pre-trained language models, providing a viable paradigm for tackling DocRE with LLMs. Xue et al. [6] guided LLMs to extract triplets from documents using a pipeline approach, starting wit
+--------------------------------------------------------------------------------
+[p2] score=1 kw=retrieval
+ approach, starting with the extraction of head entity, followed by iden- tifying the relation, and concluding with the retrieval of tail entity. Sun et al. [7] attempted to employ chain-of-retrieval and denoising strategy to steer LLMs in understanding relations and generating high-quality synthetic data. During their re- search on GPT-3s contex
+--------------------------------------------------------------------------------
+[p2] score=1 kw=retrieval
+en- tifying the relation, and concluding with the retrieval of tail entity. Sun et al. [7] attempted to employ chain-of-retrieval and denoising strategy to steer LLMs in understanding relations and generating high-quality synthetic data. During their re- search on GPT-3s contextual learning abilities for document- level biomedical information ext
+--------------------------------------------------------------------------------
+[p2] score=1 kw=retrieval
+cent works on in-context learning have mainly focused on optimizing prompt design [30], prompt ordering [31] and prompt retrieval [28], [32]. Typically, Wan et al. [22] and Wadhwa et al. [24] have conducted comprehensive evaluations of the in-context learning capabilities of GPT-3 on sentence-level RE tasks. We conduct our experiment in V-I follow
+--------------------------------------------------------------------------------
+[p4] score=1 kw=Binary
+s,o)  Rl is the mean-pooled attention weight for entity pair (es, eo) and H is the contextualized embedding in Eq.(1). Binary Classification To predict whether entity pair (es, eo) expresses relations, we first generate context-enhanced entity representations: z(s,o) s = tanh(Wshs + Wcc(s,o)), (5) where Ws, Wc  Rdd are trainable parameters. 
+--------------------------------------------------------------------------------
+[p4] score=1 kw=parameter
+nerate context-enhanced entity representations: z(s,o) s = tanh(Wshs + Wcc(s,o)), (5) where Ws, Wc  Rdd are trainable parameters. We obtain the object representation z(s,o) o in the same manner. Then, a bilinear classifier is applied on the representations to compute the probability: P (NA|es, eo) = (z(s,o) s Wz(s,o) o + b), (6) where W  Rdd
+--------------------------------------------------------------------------------
+[p4] score=1 kw=classifier
+, Wc  Rdd are trainable parameters. We obtain the object representation z(s,o) o in the same manner. Then, a bilinear classifier is applied on the representations to compute the probability: P (NA|es, eo) = (z(s,o) s Wz(s,o) o + b), (6) where W  Rdd is a trainable parameter matrix,  is the sigmoid function, P (NA|es, eo) is the probability t
+--------------------------------------------------------------------------------
+[p4] score=1 kw=parameter
+presentations to compute the probability: P (NA|es, eo) = (z(s,o) s Wz(s,o) o + b), (6) where W  Rdd is a trainable parameter matrix,  is the sigmoid function, P (NA|es, eo) is the probability that entity pair (es, eo) does not express any relation. Entity pairs with P (NA|es, eo) > 0.5 are filtered out to maintain efficiency in the subsequen
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Settings
+ot only enhances computational efficiency but also shortens the inference time of LLMs. V. E XPERIMENTS A. Experimental Settings Datasets We conduct experiments on DocRED [9] and Re-DocRED [10], two large-scale crowd-sourced benchmark datasets designed for document-level RE. DocRED, rooted in Wikipedia and Wikidata, stands as a milestone in DocRE
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Settings
+ 20, 30, 40 30, 40 lr for encoder {5, 3, 1}e-5 {3, 1}e-5 lr for classifier 1e-4 1e-4 max gradient norm 1.0 1.0 TABLE V: Settings for the RCP stage. Configuration In the RCP stage, RoBERTa large [37] is chosen as the foundational PLM encoder. We implement early stopping based on the F1 score obtained from the development set. We adopt AdamW [38] a
+--------------------------------------------------------------------------------
+[p5] score=1 kw=retrieval
+d models as encoders. Re- cently introduced LLM-based methods employ fine-tuning, in-context learning with CoT [40], or retrieval augmented generation [41] to enhance the performance of LLMs on relation extraction. Method Dev Test Ign F1 F1 Ign F1 F1 BERT-based HIN-BERTbase [42] 54.29 56.31 53.70 55.60 CorefBERTbase [43] 55.32 57.51 54.54 56.96 Co
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Qwen
+ 57.52 59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The score
+--------------------------------------------------------------------------------
+[p5] score=1 kw=7B
+59.10 57.74 59.41 LMRC LLaMA2-7B-Chat 52.40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The scores of p
+--------------------------------------------------------------------------------
+[p5] score=1 kw=LLaMA
+40 54.10 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The scores of prior methods are borrowed from corresponding
+--------------------------------------------------------------------------------
+[p5] score=1 kw=8B
+0 52.81 54.73 LMRC LLaMA2-13B-Chat 58.16 59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The scores of prior methods are borrowed from corresponding pap
+--------------------------------------------------------------------------------
+[p5] score=1 kw=LLaMA
+59.97 58.49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our baseline. F
+--------------------------------------------------------------------------------
+[p5] score=1 kw=8B
+49 60.52 LMRC Qwen2.5-7B-Instruct 59.42 61.96 59.34 61.21 LMRC LLaMA3-8B-Instruct 59.13 61.01 58.77 60.84 LMRC LLaMA3.1-8B-Instruct 59.22 61.08 58.62 60.69 TABLE VII: Evaluation results on the development and test set of DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our baseline. FT: fin
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Qwen
+y achieves stable and high performance across various models and datasets. Notably, when equipped with our LMRC method, Qwen2.5-7B-Instruct attains an F1 This article has been accepted for publication in IEEE Transactions on Big Data. This is the author's version which has not been fully edited and content may change prior to final publicatio
+--------------------------------------------------------------------------------
+[p5] score=1 kw=7B
+es stable and high performance across various models and datasets. Notably, when equipped with our LMRC method, Qwen2.5-7B-Instruct attains an F1 This article has been accepted for publication in IEEE Transactions on Big Data. This is the author's version which has not been fully edited and content may change prior to final publication. Cit
+--------------------------------------------------------------------------------
+[p6] score=1 kw=LLaMA
+ 73.66 73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our
+--------------------------------------------------------------------------------
+[p6] score=1 kw=8B
+73.98 LMRC LLaMA2-7B-Chat 72.33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our bas
+--------------------------------------------------------------------------------
+[p6] score=1 kw=LLaMA
+33 72.92 LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our baseline. FT: fine-tuning. Method I
+--------------------------------------------------------------------------------
+[p6] score=1 kw=8B
+LMRC LLaMA2-13B-Chat 74.08 74.63 LMRC Qwen2.5-7B-Instruct 75.66 76.23 LMRC LLaMA3-8B-Instruct 72.21 72.80 LMRC LLaMA3.1-8B-Instruct 72.35 72.93 TABLE VIII: Evaluation results on the test set of Re-DocRED. The scores of prior methods are borrowed from corresponding papers. Result marked with  is our baseline. FT: fine-tuning. Method Intra-F
+--------------------------------------------------------------------------------
+[p6] score=1 kw=LLaMA
+ 64.08 52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results from [17]. FT: fine-tuning. score of 76.
+--------------------------------------------------------------------------------
+[p6] score=1 kw=8B
+52.27 LMRC LLaMA2-7B-Chat 60.42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results from [17]. FT: fine-tuning. score of 76.23 o
+--------------------------------------------------------------------------------
+[p6] score=1 kw=LLaMA
+42 46.31 LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results from [17]. FT: fine-tuning. score of 76.23 on Re-DocRED, significantly surpa
+--------------------------------------------------------------------------------
+[p6] score=1 kw=8B
+LMRC LLaMA2-13B-Chat 65.88 52.66 LMRC Qwen2.5-7B-Instruct 66.97 54.43 LMRC LLaMA3-8B-Instruct 66.94 53.72 LMRC LLaMA3.1-8B-Instruct 66.70 54.17 TABLE IX: Intra- and Inter- F1 on the development set of DocRED.  denotes results from [18], and * denotes results from [17]. FT: fine-tuning. score of 76.23 on Re-DocRED, significantly surpassing 
+--------------------------------------------------------------------------------
+[p6] score=1 kw=classifier
+to perform document-level relation extraction over all entity pairs. In the second setting, we replace the original pre-classifier with a fine-tuned LLaMA2-13B-Chat model for binary relation candidate classification. Settings F1 of RCP Ign F1 F1 RCP stage LMRC 64.77 58.16 59.97 w/o pre-classifier - 38.62 39.25 LLM as pre-classifier 31.30 23.22 24.5
+--------------------------------------------------------------------------------
+[p6] score=1 kw=LLaMA
+ation extraction over all entity pairs. In the second setting, we replace the original pre-classifier with a fine-tuned LLaMA2-13B-Chat model for binary relation candidate classification. Settings F1 of RCP Ign F1 F1 RCP stage LMRC 64.77 58.16 59.97 w/o pre-classifier - 38.62 39.25 LLM as pre-classifier 31.30 23.22 24.59 TABLE X: Ablation stud
+--------------------------------------------------------------------------------
+[p6] score=1 kw=13B
+xtraction over all entity pairs. In the second setting, we replace the original pre-classifier with a fine-tuned LLaMA2-13B-Chat model for binary relation candidate classification. Settings F1 of RCP Ign F1 F1 RCP stage LMRC 64.77 58.16 59.97 w/o pre-classifier - 38.62 39.25 LLM as pre-classifier 31.30 23.22 24.59 TABLE X: Ablation study of 
+--------------------------------------------------------------------------------
+[p6] score=1 kw=binary
+entity pairs. In the second setting, we replace the original pre-classifier with a fine-tuned LLaMA2-13B-Chat model for binary relation candidate classification. Settings F1 of RCP Ign F1 F1 RCP stage LMRC 64.77 58.16 59.97 w/o pre-classifier - 38.62 39.25 LLM as pre-classifier 31.30 23.22 24.59 TABLE X: Ablation study of LMRC on the DocRED dev
+--------------------------------------------------------------------------------
+likely_config_pages: p5(score=186), p6(score=109), p9(score=61), p12(score=17), p4(score=16), p7(score=16), p10(score=8), p2(score=5)
+
+========================================================================================================================
+9793_DocKS_RAG_Optimizing_Docu.pdf
+========================================================================================================================
+pages: 14
+hit_count: 94 ; showing_top: 94
+[p13] score=7 kw=Adam
+ a rate of 0.1 in the con- volutional layers to mitigate the risk of overfitting. To enhance the stability of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p13] score=7 kw=optimizer
+n- volutional layers to mitigate the risk of overfitting. To enhance the stability of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p13] score=7 kw=Learning rate
+al layers to mitigate the risk of overfitting. To enhance the stability of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p13] score=7 kw=weight decay
+overfitting. To enhance the stability of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p13] score=7 kw=retrieval
+of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p13] score=7 kw=threshold
+he optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4. In the stage of retrieval, we establish a minimum threshold at 0.7 for measuring the similarity, 13
+--------------------------------------------------------------------------------
+[p14] score=7 kw=LORA
+nformative prompts with maxi- mum length of 512 tokens.  Hybrid-Prompt Tuning. We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the tra
+--------------------------------------------------------------------------------
+[p14] score=7 kw=LLaMA
+ybrid-Prompt Tuning. We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate sched
+--------------------------------------------------------------------------------
+[p14] score=7 kw=8B
+rompt Tuning. We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler
+--------------------------------------------------------------------------------
+[p14] score=7 kw=rank
+ We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler with cosine va
+--------------------------------------------------------------------------------
+[p14] score=7 kw=learning rate
+thod to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler with cosine variations for training, and we conduct fine-tuning for 3 epochs. All experiments conducted i
+--------------------------------------------------------------------------------
+[p14] score=7 kw=batch size
+e low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler with cosine variations for training, and we conduct fine-tuning for 3 epochs. All experiments conducted in this paper are implemented
+--------------------------------------------------------------------------------
+[p14] score=7 kw=learning rate
+0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler with cosine variations for training, and we conduct fine-tuning for 3 epochs. All experiments conducted in this paper are implemented by PyTorch, and are trained on four 24GB RTX 3090 GPUs. 14
+--------------------------------------------------------------------------------
+[p13] score=5 kw=Dropout
+nal lay- ers, which aggregate the neighborhood information and capture the long-range dependencies within the document. Dropout is set at a rate of 0.1 in the con- volutional layers to mitigate the risk of overfitting. To enhance the stability of training, Adam is employed as the optimizer. Learning rate is set to 1e-3, and weight decay is 5e-4.
+--------------------------------------------------------------------------------
+[p14] score=5 kw=LLaMA
+ are further transferred into informative prompts with maxi- mum length of 512 tokens.  Hybrid-Prompt Tuning. We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the ba
+--------------------------------------------------------------------------------
+[p14] score=5 kw=8B
+rther transferred into informative prompts with maxi- mum length of 512 tokens.  Hybrid-Prompt Tuning. We adopt LLaMA3-8B as the backbone LLM. LORA is chosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch 
+--------------------------------------------------------------------------------
+[p14] score=5 kw=warmup
+hosen as the adapter training method to fine-tune LLaMA3-8B. The low- rank setting of the adapter is 16, along with the warmup ratio of 0.1. We set the learning rate to 5e-5, and the batch size is 2 for both the training and evaluation stage. We utilize a learning rate scheduler with cosine variations for training, and we conduct fine-tuning fo
+--------------------------------------------------------------------------------
+[p14] score=5 kw=epoch
+ation stage. We utilize a learning rate scheduler with cosine variations for training, and we conduct fine-tuning for 3 epochs. All experiments conducted in this paper are implemented by PyTorch, and are trained on four 24GB RTX 3090 GPUs. 14
+--------------------------------------------------------------------------------
+[p4] score=3 kw=LORA
+h (DocKG) and sentence-level semantic RAG (SetRAG); (2) Hybrid-prompt tuning based on large language models (LLMs) with LORA. entities and relations to better capture the contextual infor- mation within the documents. Formally, in a general graph G(E, R), each entity e  E is represented as an embedding vector h(0) e  Rd, where d is the dime
+--------------------------------------------------------------------------------
+[p5] score=3 kw=threshold
+ the construction of DocKG is processed as: DocKG = {(ea, rj, eb)|P (rj|ea, eb) >  er}, (6) where er is a pre-defined threshold to determine the mini- mal probability of relation rj between entities ea and eb. In this way, we effectively leverage GNNs to capture the rich interactions between entities and relations within different documents. Mea
+--------------------------------------------------------------------------------
+[p5] score=3 kw=threshold
+ from DocKG and construct the candidate subgraph Gq as: Gq = {e  V | sim(q, e) >  eq}, (9) where eq is a pre-defined threshold that determines the retained sets of entity and relation interactions that are most relevant with the query q. Then, we create the informative prompts using the structural interactions within the retrieved subgraphs, al
+--------------------------------------------------------------------------------
+[p6] score=3 kw=LORA
+ts of massive generalized knowledge (Goswami et al., 2020). Subsequently, In our proposed DocKS-RAG framework, we adopt LORA, a general adapter training method (Hu et al., 2021), to fine tune LLMs. Specifically, by integrating adapter modules, we are supposed to achieve fine-tuning without modifying the entire parameter set of the pre-trained
+--------------------------------------------------------------------------------
+[p7] score=3 kw=Implementation Details
+ et al., 2024), and LMRC (Li et al., 2024). We refer the reader to Appendix A.2 for more details of the baselines. 5.3. Implementation Details. The technical modules of DocKS-RAG primarily consist of document-Level knowledge graph construction, sentence- level knowledge base construction, and hybrid-prompt tun- ing. The parameters for the comparative experimen
+--------------------------------------------------------------------------------
+[p7] score=3 kw=retrieval
+asks. Document-Level Knowledge Graph Retrieval. To fur- ther investigate how the document-level knowledge graph (DocKG) retrieval effects the performance of LLMs on document-level RE tasks, we conduct extra experiments on the development set of RE-DocRED with different eq  [0, 1], which is a pre-defined threshold that for rel- evant subgraphs re
+--------------------------------------------------------------------------------
+[p7] score=3 kw=threshold
+s, we conduct extra experiments on the development set of RE-DocRED with different eq  [0, 1], which is a pre-defined threshold that for rel- evant subgraphs retrieval. As illustrated in Table 3, eq 7
+--------------------------------------------------------------------------------
+[p7] score=3 kw=retrieval
+evelopment set of RE-DocRED with different eq  [0, 1], which is a pre-defined threshold that for rel- evant subgraphs retrieval. As illustrated in Table 3, eq 7
+--------------------------------------------------------------------------------
+[p8] score=3 kw=threshold
+w/o Hybrid-Prompt Tuning 20.46 21.07 20.53 20.94 26.15 26.87 25.89 26.32 Table 3. Performance comparison with different threshold eq in DocKG on development (Dev) set of Re-DocRED. Experimental results achieve peak performance at eq = 0.7. Ours-DocKG RE-DocRED (Dev) eq 0 0.2 0.5 0.7 0.9 1 F1 36.42 53.26 67.45 75.31 73.89 68.59 Ign-F1 32.06 49.5
+--------------------------------------------------------------------------------
+[p8] score=3 kw=threshold
+53.26 67.45 75.31 73.89 68.59 Ign-F1 32.06 49.51 63.37 74.64 73.16 68.17 Table 4. Performance comparison with different threshold k in SetRAG on development (Dev) set of Re-DocRED. Experimental results achieve peak performance at k = 5. Ours-SetRAG RE-DocRED (Dev) k 0 1 3 5 8 10 F1 67.78 70.15 74.26 75.31 71.23 68.26 Ign-F1 65.32 68.54 72.75 74.64
+--------------------------------------------------------------------------------
+[p8] score=3 kw=retrieval
+1 scores show substantial improvement and achieve peak performance at eq = 0 .7, reflecting the effectiveness of graph retrieval by capturing the rich inter- actions between entities and relations. However, the per- formance declines when the threshold raises more, which demonstrates that only considering the most relevant entitiy in DocKG limits
+--------------------------------------------------------------------------------
+[p8] score=3 kw=threshold
+tasks. Extra experiments are performed on the development set of RE-DocRED with different k  N, which is a pre-defined threshold that means the Topk relevant sentences will be retrieved. As demon- strated in Table 4, the parameter k has sufficient influence in the performance of DocKS-RAG. As the threshold increases, both F1 and Ign-F1 scores exh
+--------------------------------------------------------------------------------
+[p8] score=3 kw=parameter
+ is a pre-defined threshold that means the Topk relevant sentences will be retrieved. As demon- strated in Table 4, the parameter k has sufficient influence in the performance of DocKS-RAG. As the threshold increases, both F1 and Ign-F1 scores exhibit significant improvements, reaching peak performance at k = 5 , which shows that retrieving releva
+--------------------------------------------------------------------------------
+[p8] score=3 kw=threshold
+trieved. As demon- strated in Table 4, the parameter k has sufficient influence in the performance of DocKS-RAG. As the threshold increases, both F1 and Ign-F1 scores exhibit significant improvements, reaching peak performance at k = 5 , which shows that retrieving relevant contextual sentences is helpful to im- prove the relational and semantic u
+--------------------------------------------------------------------------------
+[p8] score=3 kw=threshold
+ is helpful to im- prove the relational and semantic understanding of LLMs for document-level RE tasks. However, as the threshold in- creases more, lowly relevant or even irrelevant sentences are probably retrieved, which will bring extra noises and lead to the decline of overall performance and model reliability. 5.6. Ablation Study To assess the
+--------------------------------------------------------------------------------
+[p9] score=3 kw=retrieval
+plexity of our operations. Q2: How DocKS-RAG specifically mitigates the noise dur- ing knowledge graph construction and retrieval processes? Response to Q2: As presented in Section 4, firstly, DocKS- RAG applies a threshold parameter er during graph re- trieval to filter out extraneous entities. Secondly, another threshold parameter eq is used t
+--------------------------------------------------------------------------------
+[p9] score=3 kw=threshold
+ge graph construction and retrieval processes? Response to Q2: As presented in Section 4, firstly, DocKS- RAG applies a threshold parameter er during graph re- trieval to filter out extraneous entities. Secondly, another threshold parameter eq is used to retrieve the relevant con- textual sentences. Finally, DocKS-RAG generates hybrid prompts th
+--------------------------------------------------------------------------------
+[p9] score=3 kw=parameter
+onstruction and retrieval processes? Response to Q2: As presented in Section 4, firstly, DocKS- RAG applies a threshold parameter er during graph re- trieval to filter out extraneous entities. Secondly, another threshold parameter eq is used to retrieve the relevant con- textual sentences. Finally, DocKS-RAG generates hybrid prompts that combine
+--------------------------------------------------------------------------------
+[p9] score=3 kw=retrieval
+ without compromising the quality of relational ex- traction. Furthermore, by implementing strategies such as threshold retrieval, we manage to streamline the complexity of the operations involved. Integrating both modules en- hances the models adaptability to various document types and ensures robust performance in real-world applications. 7.3. 
+--------------------------------------------------------------------------------
+[p10] score=3 kw=parameter
+NLP 2020, pp. 12631276, 2020. He, J., Zhou, C., Ma, X., Berg-Kirkpatrick, T., and Neubig, G. Towards a unified view of parameter-efficient trans- fer learning. In International Conference on Learning Representations, 2022. Hu, J. E., Shen, Y ., Wallis, P., Allen-Zhu, Z., Li, Y ., Wang, S., and Chen, W. Lora: Low-rank adaptation of large language 
+--------------------------------------------------------------------------------
+[p10] score=3 kw=Lora
+nce on Learning Representations, 2022. Hu, J. E., Shen, Y ., Wallis, P., Allen-Zhu, Z., Li, Y ., Wang, S., and Chen, W. Lora: Low-rank adaptation of large language models. ArXiv, abs/2106.09685, 2021. Huang, H., Yuan, C., Liu, Q., and Cao, Y . Document-level relation extraction via separate relation representation and logical reasoning. ACM T
+--------------------------------------------------------------------------------
+[p10] score=3 kw=rank
+rning Representations, 2022. Hu, J. E., Shen, Y ., Wallis, P., Allen-Zhu, Z., Li, Y ., Wang, S., and Chen, W. Lora: Low-rank adaptation of large language models. ArXiv, abs/2106.09685, 2021. Huang, H., Yuan, C., Liu, Q., and Cao, Y . Document-level relation extraction via separate relation representation and logical reasoning. ACM Transaction
+--------------------------------------------------------------------------------
+[p12] score=3 kw=threshold
+ 2021, pp. 39994006, 2021. Zhou, W., Huang, K., Ma, T., and Huang, J. Document-level relation extraction with adaptive thresholding and local- ized context pooling. In AAAI Conference on Artificial Intelligence, 2020. 12
+--------------------------------------------------------------------------------
+[p13] score=3 kw=classifier
+  LMRC (Li et al., 2024) addresses the performance gap in between LLMs and traditional approaches by proposing a novel classifier-LLM methodology that effectively directs the LLMs attention towards relevant entity pairs. A.3. Implementation Details The technical modules of DocKS-RAG primarily consist of document-Level knowledge graph construction
+--------------------------------------------------------------------------------
+[p13] score=3 kw=Implementation Details
+ing a novel classifier-LLM methodology that effectively directs the LLMs attention towards relevant entity pairs. A.3. Implementation Details The technical modules of DocKS-RAG primarily consist of document-Level knowledge graph construction, sentence- level knowledge base construction, and hybrid-prompt tun- ing. The specific experimental parameters are set 
+--------------------------------------------------------------------------------
+[p8] score=2 kw=threshold
+ieval by capturing the rich inter- actions between entities and relations. However, the per- formance declines when the threshold raises more, which demonstrates that only considering the most relevant entitiy in DocKG limits the global understanding of model. Sentence-Level Knowledge Base Retrieval. We further in- vestigate how SetRAG mechanism e
+--------------------------------------------------------------------------------
+[p9] score=2 kw=threshold
+g us to handle tasks efficiently while maintaining high performance of relational extraction. Additionally, by applying threshold retrieval strategies, we could further simplify the complexity of our operations. Q2: How DocKS-RAG specifically mitigates the noise dur- ing knowledge graph construction and retrieval processes? Response to Q2: As pres
+--------------------------------------------------------------------------------
+[p9] score=2 kw=retrieval
+ndle tasks efficiently while maintaining high performance of relational extraction. Additionally, by applying threshold retrieval strategies, we could further simplify the complexity of our operations. Q2: How DocKS-RAG specifically mitigates the noise dur- ing knowledge graph construction and retrieval processes? Response to Q2: As presented in S
+--------------------------------------------------------------------------------
+[p9] score=2 kw=threshold
+KS- RAG applies a threshold parameter er during graph re- trieval to filter out extraneous entities. Secondly, another threshold parameter eq is used to retrieve the relevant con- textual sentences. Finally, DocKS-RAG generates hybrid prompts that combine the information from both the DocKG and SetRAG, which integrates relevant contextual inform
+--------------------------------------------------------------------------------
+[p9] score=2 kw=parameter
+plies a threshold parameter er during graph re- trieval to filter out extraneous entities. Secondly, another threshold parameter eq is used to retrieve the relevant con- textual sentences. Finally, DocKS-RAG generates hybrid prompts that combine the information from both the DocKG and SetRAG, which integrates relevant contextual informa- tion to
+--------------------------------------------------------------------------------
+[p9] score=2 kw=threshold
+o- cessing without compromising the quality of relational ex- traction. Furthermore, by implementing strategies such as threshold retrieval, we manage to streamline the complexity of the operations involved. Integrating both modules en- hances the models adaptability to various document types and ensures robust performance in real-world applicati
+--------------------------------------------------------------------------------
+[p1] score=1 kw=retrieval
+ (NLP) domain, with substantial applications in real-world scenarios, such as knowledge graph construction, information retrieval, and automated question answering (He et al., 2022; Xiong et al., 2017; Nayak & Ng, 2019). The goal of RE is to extract structured and semantic triplets in the form of subject  relation  object from the raw texts. Wit
+--------------------------------------------------------------------------------
+[p2] score=1 kw=LLAMA
+e propose a novel and effective framework, named DocKS-RAG, which aims to improve large language models (LLMs), such as LLAMA3 and GPT-4 (Dubey et al., 2024; Achiam et al., 2023) to perform document-level relation extraction (RE) tasks by introducing additional structural knowledge and enriched semantic information. Specifically, to better cap
+--------------------------------------------------------------------------------
+[p2] score=1 kw=Parameter
+h the retrieved semantic information from SetRAG. Furthermore, we present a hybrid-prompt tuning method, which conducts Parameter-Efficient Fine-Tuning (PEFT) (Hu et al., 2021) to enhance the adaptability and performance of LLMs on specific document-level RE tasks. Finally, extensive ex- periments are conducted on two open benchmark datasets, DocR
+--------------------------------------------------------------------------------
+[p3] score=1 kw=binary
+rm))] , (1) where P represents the set of all unique pairs of entities (ea, eb) identified from the document. yabm is a binary indicator variable, which is set to 1 if the relation rm exists between entities ea and eb, and 0 otherwise. P (ea, eb|rm) is the predicted probability that the relation rm exists between the entities ea and eb. We aim 
+--------------------------------------------------------------------------------
+[p3] score=1 kw=Parameter
+a hybrid-prompt tuning method, which generates the combined prompts from DocKG and SetRAG, and integrates by conducting Parameter-Efficient Fine-Tuning (PEFT) to further improve the performance of LLMs on document-level RE tasks. 4.2. Document-Level Knowledge Graph Construction for Hybrid Prompts Generation In this part, we construct a document-le
+--------------------------------------------------------------------------------
+[p5] score=1 kw=parameter
+g  Gen (Gq), P s  Gen (Sk) 8: Ph  Concat(Pg, Ps) 9: for t = 1 to T do 10: LLMnew  T rain (LLMold, Ph, A) 11: Update parameters of adapter A 12: end for 13: Tp  LLMnew ( Ph) 14: Return: Tp relation between ea and eb. Then, we employ a softmax function to calculate the predicted probability of the relation type rj between ea and eb, the proces
+--------------------------------------------------------------------------------
+[p5] score=1 kw=retrieval
+prompts PDocKG generation is represented as: PDocKG = gDocKG  {e, r|e, r  Gq}  . (10) By adopting the proposed DocKG retrieval method, we ef- fectively exploit the structural interactions between different entities and relations. Moreover, the relevant subgraphs as- sociated with the user query are efficiently extracted and transferred into inf
+--------------------------------------------------------------------------------
+[p5] score=1 kw=Retrieval
+ part, to further enhance the semantic understanding of LLMs for document-level RE, we design a sentence-level semantic Retrieval-Augmented Generation (SetRAG) mech- anism, which are presented in lines 4 to 5 in Algorithm 1. It mainly involves three processes for documents: segmen- tation, embedding and matching. Specifically, individual sentences
+--------------------------------------------------------------------------------
+[p6] score=1 kw=retrieval
+e sim(, ) is a similarity function. The topk relevant sentences from the SetKB are then retrieved. The process of the retrieval is expressed as: Sk = Topk  M (q, ti), k  . (14) Finally, we further generate another part of hybrid prompts PSetRAG using the retrieved sentences from SetKB,Sk, and theirs relevant triplets Tk. The generation of PSet
+--------------------------------------------------------------------------------
+[p6] score=1 kw=Retrieval
+ designed hybrid-prompt tuning framework that leverages both document-level Knowledge Graph and sentence-level semantic Retrieval-Augmented Generation (RAG) and con- ducts Parameter-Efficient Fine-Tuning (PEFT) to enhance the performance of LLMs on document-level RE tasks, which are presented in lines 6 to 12 in Algorithm 1. Hybrid Prompts Generat
+--------------------------------------------------------------------------------
+[p6] score=1 kw=Parameter
+ges both document-level Knowledge Graph and sentence-level semantic Retrieval-Augmented Generation (RAG) and con- ducts Parameter-Efficient Fine-Tuning (PEFT) to enhance the performance of LLMs on document-level RE tasks, which are presented in lines 6 to 12 in Algorithm 1. Hybrid Prompts Generation. For a query q, we generate the hybrid prompts P
+--------------------------------------------------------------------------------
+[p6] score=1 kw=Parameter
+t semantic information retrieved from Se- tRAG. The specific calculations are referred to Equs.(7-10) and Equs.(13-15). Parameter-Efficient Fine-Tuning on LLMs. As we konw, LLM is initially fine-tuned on a large, annotated dataset and consists of massive generalized knowledge (Goswami et al., 2020). Subsequently, In our proposed DocKS-RAG framewor
+--------------------------------------------------------------------------------
+[p6] score=1 kw=parameter
+sed framework. The output with PEFT is calculated as: OP EF T = LLM  PHybrid ;  + A  , (17) where  are the original parameters of the pre-trained LLM, and A is referred to the learnable parameters associated with the adapter module that will be fine-tuned. In summary, we propose a novel and effective framework, named DocKS-RAG, which mainly co
+--------------------------------------------------------------------------------
+[p6] score=1 kw=parameter
+PHybrid ;  + A  , (17) where  are the original parameters of the pre-trained LLM, and A is referred to the learnable parameters associated with the adapter module that will be fine-tuned. In summary, we propose a novel and effective framework, named DocKS-RAG, which mainly consists of two stages. In stage 1, we aim to generate the informative h
+--------------------------------------------------------------------------------
+[p6] score=1 kw=parameter
+ the constructed document-level knowl- edge graph and sentence-level knowledge base. In stage 2, we consider conducting parameter-efficient fine-tuning on LLMs with the extended hybrid prompts to further enhance the adaptability and performance of LLMs on the complex document-level RE tasks. 5. Experiments 5.1. Datasets. We evaluate the performanc
+--------------------------------------------------------------------------------
+[p7] score=1 kw=parameter
+cument-Level knowledge graph construction, sentence- level knowledge base construction, and hybrid-prompt tun- ing. The parameters for the comparative experiments are set as reported in their paper. We refer the reader to Appendix A.3 for more details of the experimental parameter settings. 5.4. Metrics. In general document-level RE tasks, both th
+--------------------------------------------------------------------------------
+[p7] score=1 kw=parameter
+xperiments are set as reported in their paper. We refer the reader to Appendix A.3 for more details of the experimental parameter settings. 5.4. Metrics. In general document-level RE tasks, both the F1 and Ign-F1 scores play crucial roles in evaluating document-level RE methods. The F1 score allows for a balanced assessment, where both false posit
+--------------------------------------------------------------------------------
+[p7] score=1 kw=settings
+ are set as reported in their paper. We refer the reader to Appendix A.3 for more details of the experimental parameter settings. 5.4. Metrics. In general document-level RE tasks, both the F1 and Ign-F1 scores play crucial roles in evaluating document-level RE methods. The F1 score allows for a balanced assessment, where both false positives and 
+--------------------------------------------------------------------------------
+[p8] score=1 kw=few-shot
+elies on transferred knowledge from few instances and leverages such experi- ence for new tasks. The results shows that few-shot learning method is not suitable for complex document-level RE tasks in our framework, and underscores the necessity of our proposed hybrid-prompt tuning in optimizing the models expressiveness and accuracy. 6. Conclusi
+--------------------------------------------------------------------------------
+[p9] score=1 kw=retrieval
+ion performance. 7.2. Response to reviewer 2: C1: It might be useful to briefly explain how SetRAG differs from typical retrieval mechanisms. Response to C1: Our proposed SetRAG module constructs a knowledge base from segmented sentences and retrieves contextually relevant information based on embeddings, al- lowing for improved understanding of t
+--------------------------------------------------------------------------------
+[p10] score=1 kw=llama
+. 41714186, 2019. Dubey, A., Jauhri, A., Pandey, A., Kadian, A., Al-Dahle, A., Letman, A., and Akhil Mathur, e. a. The llama 3 herd of models. ArXiv, abs/2407.21783, 2024. Fu, T.-J., Li, P.-H., and Ma, W.-Y . GraphRel: Modeling text as relational graphs for joint entity and relation extraction. In Proceedings of the 57th Annual Meeting of the
+--------------------------------------------------------------------------------
+[p10] score=1 kw=classifier
+ference on Computational Linguistics, pp. 15511560, 2020. Li, X., Chen, K., Long, Y ., and Zhang, M. Llm with relation classifier for document-level relation extraction. ArXiv, 2024. Nan, G., Guo, Z., Sekulic, I., and Lu, W. Reasoning with latent structure refinement for document-level relation extraction. In Proceedings of the 58th Annual Meeting
+--------------------------------------------------------------------------------
+[p11] score=1 kw=retrieval
+oinfor- matics, 40, 2023. Sun, Q., Huang, K., Yang, X., Tong, R., Zhang, K., and Poria, S. Consistency guided knowledge retrieval and denoising in llms for zero-shot document-level relation triplet extraction. Proceedings of the ACM on Web Con- ference 2024, 2024. Tan, Q., He, R., Bing, L., and Ng, H. T. Document-level re- lation extraction with a
+--------------------------------------------------------------------------------
+[p11] score=1 kw=rank
+tion for Computational Linguistics: ACL 2022, pp. 257268, 2022. Xiong, C., Power, R., and Callan, J. Explicit semantic rank- ing for academic search via knowledge graph embedding. In Proceedings of the 26th International Conference on World Wide Web, WWW 17, pp. 12711279, 2017. Xu, B., Wang, Q., Lyu, Y ., Zhu, Y ., and Mao, Z. Entity struc
+--------------------------------------------------------------------------------
+[p13] score=1 kw=retrieval
+e construction of Document-level Knowl- edge graph (DocKG) and later extract structural knowl- edge from DocKG by graph retrieval for further hybrid prompt generation. In the stage of construction, both the entity and relation embedding dimensions are 128, and the network is initialized with 8 convolutional lay- ers, which aggregate the neighborho
+--------------------------------------------------------------------------------
+[p14] score=1 kw=Retrieval
+s to informative prompts with a maximum length of 128 tokens.  Sentence-Level Knowledge Base Construction and Semantic Retrieval. We harness BGE as embedding model for sentence representation. In the semantic retrieval component, Top5 relevant sentences will be retrieved associated with the user query, which are further transferred into informati
+--------------------------------------------------------------------------------
+[p14] score=1 kw=retrieval
+ase Construction and Semantic Retrieval. We harness BGE as embedding model for sentence representation. In the semantic retrieval component, Top5 relevant sentences will be retrieved associated with the user query, which are further transferred into informative prompts with maxi- mum length of 512 tokens.  Hybrid-Prompt Tuning. We adopt LLaMA3-8B
+--------------------------------------------------------------------------------
+[p1] score=0 kw=Retrieval
+ion data to better capture the structural information between entities and rela- tions. Then, a Sentence-level Semantic Retrieval- Augmented Generation mechanism is designed to consider the similarity in different sentences by retrieving the relevant contextual semantic infor- mation. Furthermore, we present a hybrid-prompt tuning method on large 
+--------------------------------------------------------------------------------
+[p2] score=0 kw=Retrieval
+ruct a Document-level Knowledge Graph (DocKG) from the observable documentation data. Then, a Sentence-level Se- mantic Retrieval-Augmented Generation (SetRAG) mech- anism is designed to consider the similarity of different sentences by retrieving the relevant contextual semantic in- formation. From the perspective of semantic alignment, we transf
+--------------------------------------------------------------------------------
+[p2] score=0 kw=Retrieval
+n document-level RE by considering the extra structural and semantic information.  We design a sentence-level semantic Retrieval- Augmented Generation mechanism aimed at enhancing the semantic understanding of LLMs by retrieving the relevant sentences within the documents.  We design a hybrid prompts generation method to com- bine the relevant s
+--------------------------------------------------------------------------------
+[p3] score=0 kw=Retrieval
+ph Neural Networks (GNNs) to obtain both representations of entities and relations. Secondly, a Sentence-level Semantic Retrieval-Augmented Generation (SetRAG) mechanism is designed to enrich the models contextual understanding gained from the relevant docu- ments. Finally, we present a hybrid-prompt tuning method, which generates the combined pr
+--------------------------------------------------------------------------------
+[p5] score=0 kw=Retrieval
+omprehensive representations in the semantic space, which enables more accurate extraction for document-level RE. Graph Retrieval for Hybrid Prompts Generation. To efficiently extract structural knowledge from DocKG, we employ a graph retrieval method for further hybrid prompts generation. The objective of graph retrieval is to identify a relevant
+--------------------------------------------------------------------------------
+[p5] score=0 kw=retrieval
+raph Retrieval for Hybrid Prompts Generation. To efficiently extract structural knowledge from DocKG, we employ a graph retrieval method for further hybrid prompts generation. The objective of graph retrieval is to identify a relevant subgraph Gq  DocKG associated with the given query q, and then obtain the informative prompts PDocKG based on the
+--------------------------------------------------------------------------------
+[p5] score=0 kw=retrieval
+ knowledge from DocKG, we employ a graph retrieval method for further hybrid prompts generation. The objective of graph retrieval is to identify a relevant subgraph Gq  DocKG associated with the given query q, and then obtain the informative prompts PDocKG based on the retrieved subgraph. Specifically, we firstly transform the query q into the se
+--------------------------------------------------------------------------------
+[p6] score=0 kw=Retrieval
+h sentence si is converted into its semantic em- bedding vector ti and stored in the constructed SetKB . Knowledge Base Retrieval Process. The constructed SetKB enables semantic retrieval of relevant sentences as- sociated with the user queries. Specifically, given a query q, the most relevant sentences are identified and retrieved through similar
+--------------------------------------------------------------------------------
+[p6] score=0 kw=retrieval
+ector ti and stored in the constructed SetKB . Knowledge Base Retrieval Process. The constructed SetKB enables semantic retrieval of relevant sentences as- sociated with the user queries. Specifically, given a query q, the most relevant sentences are identified and retrieved through similarity measuring. The calculation of measuring is formulated 
+--------------------------------------------------------------------------------
+[p6] score=0 kw=parameter
+LLMs. Specifically, by integrating adapter modules, we are supposed to achieve fine-tuning without modifying the entire parameter set of the pre-trained LLM. Moreover, the adapter modules A are trained on smaller, task-specific datasets on document-level RE, which allows for rapid adaptation and minimizes the computational complexity of our propos
+--------------------------------------------------------------------------------
+[p7] score=0 kw=retrieval
+e advanced conclusions are summarized as follows: Firstly, comparing with previous PLMs-based methods, we conduct graph retrieval on an extra constructed document- level Knowledge Graph (DocKG) to better capture the struc- tural knowledge within the documents. We later generate the informative prompts from the retrieved subgraphs, which mitigates 
+--------------------------------------------------------------------------------
+[p7] score=0 kw=Retrieval
+posed graph-based methods, we consider the simi- larity between sentences, and further design a sentence-level semantic Retrieval-Augmented Generation (SetRAG) mech- anism to enrich the contextual understanding of models. Furthermore, we present a hybrid-prompt tuning method, which generates the hybrid informative prompts by retriev- ing the relev
+--------------------------------------------------------------------------------
+[p7] score=0 kw=Retrieval
+tasets, which indicates the effec- tiveness of our framework on document-level RE tasks. Document-Level Knowledge Graph Retrieval. To fur- ther investigate how the document-level knowledge graph (DocKG) retrieval effects the performance of LLMs on document-level RE tasks, we conduct extra experiments on the development set of RE-DocRED with differ
+--------------------------------------------------------------------------------
+[p8] score=0 kw=Retrieval
+ considering the most relevant entitiy in DocKG limits the global understanding of model. Sentence-Level Knowledge Base Retrieval. We further in- vestigate how SetRAG mechanism effects the performance of LLMs on document-level RE tasks. Extra experiments are performed on the development set of RE-DocRED with different k  N, which is a pre-defined
+--------------------------------------------------------------------------------
+[p8] score=0 kw=Retrieval
+o capture the structural information between enti- ties and relations. Then, the removal of the sentence-level semantic Retrieval-Augmented Generation (SetRAG) com- ponent results in further performance degradation, which demonstrates that our designed SetRAG mechanism has sufficient influences in enhancing the semantic understand- ing of LLMs for
+--------------------------------------------------------------------------------
+[p8] score=0 kw=Few-shot
+ of Hybrid-Prompt Tuning leads to a drastic reduction in performance than others. In our framework, such case equals to Few-shot learning on LLMs, which means the model only relies on transferred knowledge from few instances and leverages such experi- ence for new tasks. The results shows that few-shot learning method is not suitable for complex 
+--------------------------------------------------------------------------------
+[p13] score=0 kw=parameter
+ graph construction, sentence- level knowledge base construction, and hybrid-prompt tun- ing. The specific experimental parameters are set as follows:  Document-Level Knowledge Graph Construction and Retrieval. We employ general graph neural net- work for the construction of Document-level Knowl- edge graph (DocKG) and later extract structural kn
+--------------------------------------------------------------------------------
+[p13] score=0 kw=Retrieval
+pt tun- ing. The specific experimental parameters are set as follows:  Document-Level Knowledge Graph Construction and Retrieval. We employ general graph neural net- work for the construction of Document-level Knowl- edge graph (DocKG) and later extract structural knowl- edge from DocKG by graph retrieval for further hybrid prompt generation. In 
+--------------------------------------------------------------------------------
+likely_config_pages: p14(score=71), p13(score=54), p8(score=24), p9(score=23), p7(score=15), p10(score=11), p6(score=10), p5(score=9)

@@ -1,6 +1,7 @@
 import json
-import math
+import glob
 import os
+import re
 import sys
 import pandas as pd
 
@@ -15,13 +16,28 @@ def read_jsonl(file_path):
     return data
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile)
             jsonlfile.write('\n')
 
 
-data_name = "dev"
+def list_shard_files(pattern):
+    shard_files = glob.glob(pattern)
+    shard_files.sort(
+        key=lambda file_path: int(re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path)).group(1))
+        if re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path))
+        else 10**9
+    )
+    if not shard_files:
+        raise FileNotFoundError(f"No shard file matched pattern: {pattern}")
+    return shard_files
+
+
+data_name = os.getenv("DATA_NAME", "dev")
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -35,20 +51,16 @@ file_path = f"../data/entity_pair_selection_prompt/{data_name}/entity_pair_selec
 
 jsonl_data = read_jsonl(file_path)
 
-len_data = len(jsonl_data)
-
 cnt = 0
-start = 0
-end = math.ceil(len_data / 200)
-print("all doc number:",end)
 
-save_doc_name = "01"
+save_doc_name = os.getenv("SAMPLE_TAG", "01")
+shard_pattern = f"../data/entity_pair_selection_run/{data_name}/result_{doc_name}_{data_name}_entity_pair_selection-{save_doc_name}_{range_tag}_*.jsonl"
+shard_files = list_shard_files(shard_pattern)
+print("all doc number:", len(shard_files))
 
 save_list = []
 
-for jsonl_id in range(start, end):
-
-    jsonl_file_path = f"../data/entity_pair_selection_run/{data_name}/result_{doc_name}_{data_name}_entity_pair_selection-{save_doc_name}_{range_tag}_{jsonl_id}.jsonl"
+for jsonl_file_path in shard_files:
     jsonl_data = read_jsonl(jsonl_file_path)
 
     for item in jsonl_data:

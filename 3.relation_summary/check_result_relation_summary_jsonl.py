@@ -2,7 +2,8 @@ import json
 import os
 import sys
 import pandas as pd
-import math
+import glob
+import re
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
@@ -15,10 +16,25 @@ def read_jsonl(file_path):
     return data
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile, ensure_ascii=False)
             jsonlfile.write('\n')
+
+
+def list_shard_files(pattern):
+    shard_files = glob.glob(pattern)
+    shard_files.sort(
+        key=lambda file_path: int(re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path)).group(1))
+        if re.search(r'_(\d+)\.jsonl$', os.path.basename(file_path))
+        else 10**9
+    )
+    if not shard_files:
+        raise FileNotFoundError(f"No shard file matched pattern: {pattern}")
+    return shard_files
 def label_judge(entity_h_id, entity_t_id, df, doc_id, rel_info):
     rels = []
     for relation_dict in df['labels'][doc_id]:
@@ -50,12 +66,9 @@ range_tag = get_range_tag(doc_start, doc_end)
 file_path = f"../data/relation_summary_prompt/{data_name}/result_{doc_name}_{data_name}_doc{range_tag}.jsonl"
 
 jsonl_data = read_jsonl(file_path)
-len_data = len(jsonl_data)
-
-
-start = 0
-end = math.ceil(len_data / 200)
-print("all doc number:",end)
+shard_pattern = f"../data/relation_summary_run/{data_name}/result_{doc_name}_{data_name}_relation_summary_{range_tag}_*.jsonl"
+shard_files = list_shard_files(shard_pattern)
+print("all doc number:", len(shard_files))
 
 save_list = []
 cnt = 0
@@ -66,9 +79,7 @@ rel_info = eval(rel_info)
 
 
 
-for jsonl_id in range(start, end):
-
-    jsonl_file_path = f"../data/relation_summary_run/{data_name}/result_{doc_name}_{data_name}_relation_summary_{range_tag}_{jsonl_id}.jsonl"
+for jsonl_file_path in shard_files:
     jsonl_data = read_jsonl(jsonl_file_path)
 
     for item in jsonl_data:

@@ -10,6 +10,13 @@ from sentence_transformers import SentenceTransformer, util
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
 
+def safe_print(text):
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        fallback_text = str(text).encode("gbk", errors="replace").decode("gbk", errors="replace")
+        print(fallback_text)
+
 def deal_head_description(entity , entity_description):
 
     original_string = entity_description
@@ -84,6 +91,7 @@ print(f"data len: {data_len}")
 
 
 data_sentences = []
+missing_title_count = 0
 for data_id in range(data_len):
     print(data_id)
     title = data_jsonl_data[data_id]['title']
@@ -91,12 +99,19 @@ for data_id in range(data_len):
     entity_t = data_jsonl_data[data_id]['entity_t']
     entities_description = data_jsonl_data[data_id]['entities_description']
 
-    if entity_h in entity_information_list[title]:
-        entity_h_description = entity_information_list[title][entity_h]
+    title_entity_info = entity_information_list.get(title)
+    if title_entity_info is None:
+        # Some titles may have encoding variants between intermediate files.
+        # Fallback to empty descriptions instead of crashing the whole run.
+        title_entity_info = {}
+        missing_title_count += 1
+
+    if entity_h in title_entity_info:
+        entity_h_description = title_entity_info[entity_h]
     else:
         entity_h_description = "no description"
-    if entity_t in entity_information_list[title]:
-        entity_t_description = entity_information_list[title][entity_t]
+    if entity_t in title_entity_info:
+        entity_t_description = title_entity_info[entity_t]
     else:
         entity_t_description = "no description"
 
@@ -107,7 +122,7 @@ for data_id in range(data_len):
 
     sentence = get_sentence(entity_h, entity_t, entity_h_description, entity_t_description, entities_description)
 
-    print(sentence)
+    safe_print(sentence)
     print("--------------------------------------------------")
 
     data_sentences.append(sentence)
@@ -116,4 +131,5 @@ data_embeddings = model.encode(data_sentences)
 
 
 np.save(embeddings_file_path, data_embeddings)
+print(f"missing title fallback count: {missing_title_count}")
 print(f"{data_name}_embeddings_{range_tag} save in {embeddings_file_path}")

@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import glob
 
 import requests
 
@@ -9,6 +10,9 @@ from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
 
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile)
@@ -21,6 +25,28 @@ def read_jsonl(file_path):
         for line in f:
             data.append(json.loads(line))
     return data
+
+
+def count_jsonl_lines(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
+
+
+def get_existing_shards(data_name, doc_name, range_tag):
+    pattern = f"../data/entity_information_run/{data_name}/result_{doc_name}_{data_name}_entity_information_{range_tag}_*.jsonl"
+    shard_infos = []
+    for file_path in sorted(glob.glob(pattern)):
+        base_name = os.path.splitext(os.path.basename(file_path))[0]
+        suffix = base_name.rsplit("_", 1)[-1]
+        if not suffix.isdigit():
+            continue
+        shard_infos.append({
+            "path": file_path,
+            "save_id": int(suffix),
+            "line_count": count_jsonl_lines(file_path),
+        })
+    shard_infos.sort(key=lambda item: item["save_id"])
+    return shard_infos
 
 
 def extract_assistant_response(response):
@@ -106,11 +132,17 @@ prompt_list = []
 response_list = []
 id_list = []
 
-start = 0
-save_id = 0
+existing_shards = get_existing_shards(data_name, doc_name, range_tag)
+saved_line_count = sum(item["line_count"] for item in existing_shards)
+start = min(saved_line_count, len_data)
+save_id = (existing_shards[-1]["save_id"] + 1) if existing_shards else 0
 end = len_data
 save_data_list = []
 save_cnt = 0
+
+if existing_shards:
+    print(f"resume detected: {len(existing_shards)} shard(s), {saved_line_count} record(s) already saved")
+    print(f"resuming from id {start}, next save_id {save_id}")
 
 for id in range(start, end):
     if len(prompt_list) == batch_size:

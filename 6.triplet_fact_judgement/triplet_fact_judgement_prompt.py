@@ -6,7 +6,7 @@ import os
 import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+from pipeline_config import append_method_tag, get_doc_range, get_method_tag, get_range_tag, read_json_file_as_df
 
 def get_doc_title(doc_id, df):
 
@@ -222,6 +222,7 @@ def get_doc(doc_id, df):
 
 
 data_name = os.getenv("DATA_NAME", "dev")
+method_tag = get_method_tag()
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -277,7 +278,8 @@ if data_name == "train_annotated" or data_name == "train":
     file_path = f"../data/multiple_choice_prompt/{data_name}/multiple_choice_prompt-path-k20_{data_name}-{doc_name}.jsonl"
     jsonl_data = read_jsonl(file_path)
 else:
-    file_path = f"../data/check_result_multiple_choice_jsonl/{data_name}/result_{doc_name}_{data_name}_multiple_choice_path-k20-{doc_name}_{range_tag}.jsonl"
+    multiple_choice_name = append_method_tag(f"path-k20-{doc_name}_{range_tag}", method_tag)
+    file_path = f"../data/check_result_multiple_choice_jsonl/{data_name}/result_{doc_name}_{data_name}_multiple_choice_{multiple_choice_name}.jsonl"
     jsonl_data = read_jsonl(file_path)
 
 save_list = []
@@ -379,6 +381,7 @@ Do not provide any explanation or extra text."""
             save_dict_1["response"] = ""
             save_list.append(save_dict_1)
 
-save_name = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_k20-{doc_name}_{range_tag}.jsonl"
+save_doc_name = append_method_tag(f"k20-{doc_name}_{range_tag}", method_tag)
+save_name = f"../data/triplet_fact_judgement_prompt/{data_name}/triplet_fact_judgement_prompt_{data_name}_{save_doc_name}.jsonl"
 save_to_jsonl(save_list, save_name)
 print(f"The result is saved in the file {save_name}")

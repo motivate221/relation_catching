@@ -9,7 +9,14 @@ import re
 import csv
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from pipeline_config import get_doc_range, get_range_tag, read_json_file_as_df
+from pipeline_config import (
+    append_method_tag,
+    get_doc_range,
+    get_method_tag,
+    get_range_tag,
+    get_use_rerank,
+    read_json_file_as_df,
+)
 
 def get_promot_txt(filename):
 
@@ -18,6 +25,9 @@ def get_promot_txt(filename):
     return text
 
 def save_to_jsonl(data, jsonl_file):
+    output_dir = os.path.dirname(jsonl_file)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(jsonl_file, 'w', encoding='utf-8') as jsonlfile:
         for item in data:
             json.dump(item, jsonlfile)
@@ -130,6 +140,16 @@ def read_jsonl(file_path):
             data.append(json.loads(line))
     return data
 
+
+def get_prompt_source(data_name, doc_name, range_tag):
+    use_rerank = get_use_rerank()
+    rerank_file = f"../data/retrieval_rerank/{data_name}/rerank-k20-{doc_name}_{range_tag}.jsonl"
+    if use_rerank and os.path.exists(rerank_file):
+        return read_jsonl(rerank_file), "rerank"
+
+    retrieval_file = f"../data/retrieval_from_train/{data_name}/path-k20-{doc_name}_{range_tag}.jsonl"
+    return read_jsonl(retrieval_file), "retrieval"
+
 def read_csv(csv_file):
     data_list = []
     with open(csv_file, 'r', newline='', encoding='utf-8') as csvfile:
@@ -162,7 +182,8 @@ def get_doc(doc_id, df):
 
 
 
-data_name = "dev"
+data_name = os.getenv("DATA_NAME", "dev")
+method_tag = get_method_tag()
 
 doc_name = "docred"
 doc_dir = f'../data/{doc_name}/'
@@ -178,7 +199,7 @@ rel_info = eval(rel_info)
 
 reverse_rel_info = {v: k for k, v in rel_info.items()}
 
-rel_objects = read_jsonl(f"../data/retrieval_from_train/{data_name}/path-k20-{doc_name}_{range_tag}.jsonl")
+rel_objects, prompt_source = get_prompt_source(data_name, doc_name, range_tag)
 
 with open('../rel2temp_with_1.json', 'r') as file:
     rel2temp = json.load(file)
@@ -188,9 +209,9 @@ rel_judge_file_path = "../rel_judge.txt"
 rel_judge_list = read_list_text_file_to_list(rel_judge_file_path)
 rel_judge_list = rel_judge_list[0]
 rel_judge_dict = {}
-for list in rel_judge_list:
+for rel_limit in rel_judge_list:
 
-    fruits = list[0].split('_')
+    fruits = rel_limit[0].split('_')
     if fruits[0] not in rel_judge_dict:
         rel_judge_dict[fruits[0]] = [(fruits[1], fruits[2])]
     else:
@@ -224,23 +245,44 @@ save_list = []
 
 for id in range(start, length):
 
-    dev_dict = {}
-    rels_list = []
-    cnt = 0
-    for item in rel_objects[id]:
-        if cnt == 0:
-            dev_dict = item
-        if cnt == 1:
-            for rel_item in item:
-                rels_list.append(rel_item)
-        cnt += 1
+    rel_object = rel_objects[id]
 
-    entities_description = dev_dict["entities_description"]
-    entity_h = dev_dict["entity_h"]
-    entity_t = dev_dict["entity_t"]
-    entity_h_id = dev_dict["entity_h_id"]
-    entity_t_id = dev_dict["entity_t_id"]
-    title = dev_dict["title"]
+    if prompt_source == "rerank":
+        dev_dict = rel_object
+        entities_description = dev_dict["entities_description"]
+        entity_h = dev_dict["entity_h"]
+        entity_t = dev_dict["entity_t"]
+        entity_h_id = dev_dict["entity_h_id"]
+        entity_t_id = dev_dict["entity_t_id"]
+        title = dev_dict["title"]
+        rerank_evidence = " ".join(dev_dict.get("evidence_sentences", []))
+        choice_rel_list = list(dev_dict.get("multiple_choice_relations", []))
+        if not choice_rel_list:
+            choice_rel_list = list(dev_dict.get("top_relations", []))
+    else:
+        dev_dict = {}
+        rels_list = []
+        cnt = 0
+        for item in rel_object:
+            if cnt == 0:
+                dev_dict = item
+            if cnt == 1:
+                for rel_item in item:
+                    rels_list.append(rel_item)
+            cnt += 1
+
+        entities_description = dev_dict["entities_description"]
+        entity_h = dev_dict["entity_h"]
+        entity_t = dev_dict["entity_t"]
+        entity_h_id = dev_dict["entity_h_id"]
+        entity_t_id = dev_dict["entity_t_id"]
+        title = dev_dict["title"]
+        rerank_evidence = ""
+        choice_rel_list = []
+        for rel_dict in rels_list:
+            rel = rel_dict[0]
+            choice_rel_list.append(rel)
+
     doc_id = get_docid(title, docred_df)
     doc_text = get_doc(doc_id, docred_df)
 
@@ -253,13 +295,7 @@ for id in range(start, length):
     else:
         entity_t_description = "no description"
 
-    evidence = get_evidence(doc_id, entity_h, entity_h_id, entity_t, entity_t_id, docred_df)
-
-    choice_rel_list = []
-    for rel_dict in rels_list:
-
-        rel = rel_dict[0]
-        choice_rel_list.append(rel)
+    evidence = rerank_evidence if rerank_evidence else get_evidence(doc_id, entity_h, entity_h_id, entity_t, entity_t_id, docred_df)
 
     entities_description = add_period_if_missing(entities_description)
     entity_h_description = add_period_if_missing(entity_h_description)
@@ -286,8 +322,15 @@ for id in range(start, length):
             options += op + ". " + op_temp + '\n'
             cnt += 1
 
-        instruction = f"""Determine which option can be inferred from the given text."""
-        inputs = f"""## Text:
+        instruction = f"""Determine which option can be inferred from the given evidence and text.
+Answer with the option letter only. If multiple options are supported, separate letters with commas. Do not explain your answer."""
+        inputs = f"""## Relation summary:
+{entities_description}
+
+## Evidence:
+{evidence}
+
+## Text:
 {doc_text}
 
 ## Options:
@@ -330,8 +373,15 @@ for id in range(start, length):
             cnt += 1
 
 
-        instruction = f"""Determine which option can be inferred from the given text."""
-        inputs = f"""## Text:
+        instruction = f"""Determine which option can be inferred from the given evidence and text.
+Answer with the option letter only. If multiple options are supported, separate letters with commas. Do not explain your answer."""
+        inputs = f"""## Relation summary:
+{entities_description}
+
+## Evidence:
+{evidence}
+
+## Text:
 {doc_text}
 
 ## Options:
@@ -355,6 +405,7 @@ for id in range(start, length):
         save_list.append(save_dict_2)
 
 
-save_name = f"../data/multiple_choice_prompt/{data_name}/multiple_choice_prompt-path-k20_{data_name}-{doc_name}_{range_tag}.jsonl"
+save_base_name = append_method_tag(f"path-k20_{data_name}-{doc_name}_{range_tag}", method_tag)
+save_name = f"../data/multiple_choice_prompt/{data_name}/multiple_choice_prompt-{save_base_name}.jsonl"
 save_to_jsonl(save_list, save_name)
 print(f"The result is saved in the file {save_name}")
