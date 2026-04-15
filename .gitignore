@@ -64,3 +64,4 @@ data/get_triplet_fact_judgement_label/
 
 # Final exported results
 result/
+logs/
